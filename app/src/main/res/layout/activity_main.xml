@@ -32,17 +32,29 @@
         android:src="@drawable/usuario" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/editext"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="12dp"
         android:drawableStart="@drawable/ic_mail"
         android:textSize="12dp"
-        android:hint="Escriba su correo electronico"
+        android:hint=" Escriba su correo electronico"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine" />
 
+    <EditText
+        android:id="@+id/editext2"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:drawableStart="@drawable/ic_key"
+        android:textSize="12dp"
+        android:hint="  Escriba su contraseña"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
