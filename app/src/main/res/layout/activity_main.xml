@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/teal_200"
+    android:background="@drawable/fondo"
     android:layout_margin="10dp"
     tools:context=".MainActivity">
 
@@ -14,7 +14,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="75dp"
         android:layout_gravity="center"
         android:text="Inicio de sesion"
         android:textStyle="bold"
@@ -36,7 +36,7 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="25dp"
         android:drawableStart="@drawable/ic_mail"
         android:textSize="12dp"
         android:hint=" Escriba su correo electronico"
@@ -56,5 +56,26 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_buutton"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="17dp"
+        android:fontFamily="sans-serif-thin"
+        android:textStyle="bold"
+        android:text="ingresar" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColorHint="@color/design_default_color_error"
+        android:text="¿olvidaste tu contraseña?"
+        android:layout_marginTop="22dp"/>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

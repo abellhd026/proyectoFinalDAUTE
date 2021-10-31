@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoFinalDAUTE">
         <activity
+            android:name=".Navigation_DAUTE"
+            android:exported="false"
+            android:label="@string/title_activity_navigation_daute"
+            android:theme="@style/Theme.ProyectoFinalDAUTE.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
