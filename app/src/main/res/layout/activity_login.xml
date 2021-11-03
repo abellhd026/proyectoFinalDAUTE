@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Login">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:layout_gravity="center"
+        android:text="Inicio de sesion"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        />
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/usuario" />
+
+    <EditText
+        android:id="@+id/emailInput"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:drawableStart="@drawable/ic_mail"
+        android:textSize="12dp"
+        android:hint=" Escriba su correo electronico"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/passInput"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:drawableStart="@drawable/ic_key"
+        android:textSize="12dp"
+        android:hint="  Escriba su contraseña"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_buutton"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="17dp"
+        android:fontFamily="sans-serif-thin"
+        android:textStyle="bold"
+        android:text="ingresar" />
+
+    <Button
+        android:id="@+id/btnGotoRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColorHint="@color/design_default_color_error"
+        android:text="¿olvidaste tu contraseña?"
+        android:layout_marginTop="22dp"/>
+
+
+</LinearLayout>
