@@ -15,8 +15,9 @@
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
         android:text="Bienvenid@"
+        android:textColorLink="@color/white"
         android:textColor="@color/white"
-        android:textStyle="bold"
+        android:textStyle="bold"65
         android:textSize="35sp">
     </TextView>
 
