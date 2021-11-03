@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/fondo"
     tools:context=".Login">
 
     <TextView
@@ -30,32 +31,45 @@
 
     <EditText
         android:id="@+id/emailInput"
-        android:layout_width="220dp"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
         android:drawableStart="@drawable/ic_mail"
-        android:textSize="12dp"
+        android:textSize="18dp"
         android:hint=" Escriba su correo electronico"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine" />
 
-    <EditText
-        android:id="@+id/passInput"
-        android:layout_width="220dp"
+    <!--
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="12dp"
-        android:drawableStart="@drawable/ic_key"
-        android:textSize="12dp"
-        android:hint="  Escriba su contraseña"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textPassword" />
+        android:hint="Password">*/
+</com.google.android.material.textfield.TextInputLayout> -->
+
+
+        <EditText
+            android:id="@+id/passInput"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:textSize="15dp"
+            android:ems="10"
+            android:hint="  Escriba su contraseña"
+            android:gravity="start|top"
+            android:drawableStart="@drawable/ic_key"
+            android:inputType="textPassword" />
+
+
+
+
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLogin"
+        android:id="@+id/btn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_buutton"
@@ -66,14 +80,42 @@
         android:textStyle="bold"
         android:text="ingresar" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnGotoRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColorHint="@color/design_default_color_error"
+        android:background="@color/material_on_surface_stroke"
         android:text="¿olvidaste tu contraseña?"
         android:layout_marginTop="22dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center"
+            android:textColorHint="@color/design_default_color_error"
+            android:background="@color/material_on_surface_stroke"
+            android:text="¿No tienes cuenta?"
+            android:layout_marginTop="22dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center"
+            android:textColorHint="@color/design_default_color_error"
+            android:background="@color/material_on_surface_stroke"
+            android:text="Registrate"
+            android:layout_marginTop="22dp"/>
+
+    </LinearLayout>
 
 </LinearLayout>

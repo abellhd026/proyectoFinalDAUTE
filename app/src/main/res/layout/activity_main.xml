@@ -14,10 +14,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
-        android:text="Bienvenido"
-        android:textSize="20sp">
-
+        android:text="Bienvenid@"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="35sp">
     </TextView>
+
 
 
 </LinearLayout>
