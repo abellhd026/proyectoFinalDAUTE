@@ -53,7 +53,7 @@
 
         <EditText
             android:id="@+id/passInput"
-            android:layout_width="220dp"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
@@ -65,16 +65,16 @@
             android:inputType="textPassword" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn2"
+        android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_buutton"
-        android:textColor="@color/black"
+        android:textColor="@color/red"
         android:layout_gravity="center"
         android:layout_marginTop="17dp"
         android:fontFamily="sans-serif-thin"
         android:textStyle="bold"
-        android:text="ingresar" />
+        android:text="Ingresar" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnGotoRegister"
