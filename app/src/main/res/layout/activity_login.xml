@@ -64,10 +64,6 @@
             android:drawableStart="@drawable/ic_key"
             android:inputType="textPassword" />
 
-
-
-
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn2"
         android:layout_width="wrap_content"
@@ -89,9 +85,12 @@
         android:background="@color/material_on_surface_stroke"
         android:text="¿olvidaste tu contraseña?"
         android:layout_marginTop="22dp"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="22dp"
         android:layout_gravity="center">
 
         <androidx.appcompat.widget.AppCompatButton
@@ -103,7 +102,7 @@
             android:textColorHint="@color/design_default_color_error"
             android:background="@color/material_on_surface_stroke"
             android:text="¿No tienes cuenta?"
-            android:layout_marginTop="22dp"/>
+            android:layout_marginTop="0dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn4"
@@ -114,7 +113,8 @@
             android:textColorHint="@color/design_default_color_error"
             android:background="@color/material_on_surface_stroke"
             android:text="Registrate"
-            android:layout_marginTop="22dp"/>
+            android:textColor="@color/red"
+            android:layout_marginTop="0dp"/>
 
     </LinearLayout>
 
