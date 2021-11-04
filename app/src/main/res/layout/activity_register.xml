@@ -59,7 +59,7 @@
         android:inputType="textPassword" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_buutton"
@@ -71,7 +71,7 @@
         android:text="Registrarme " />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnGotoRegister"
+        android:id="@+id/btnCuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
