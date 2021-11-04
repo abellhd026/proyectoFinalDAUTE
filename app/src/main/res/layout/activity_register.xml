@@ -75,9 +75,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColorHint="@color/design_default_color_error"
         android:background="@color/material_on_surface_stroke"
         android:text="¿Ya tienes una cuenta?"
+        android:textColor="@color/white"
         android:layout_marginTop="22dp"/>
 
 
