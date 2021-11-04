@@ -14,13 +14,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
     public EditText emailInput, passInput;
     private Button login, gotoRegister;
     FirebaseAuth firebaseAuth;
-    
-    
+    FirebaseAuth.AuthStateListener mAuthListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,21 @@ public class Login extends AppCompatActivity {
         gotoRegister = findViewById(R.id.btnGotoRegister);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        
+
+
+        // Verifica si el usuario ya ha iniciado sesion
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if(user!=null){
+                    Intent intent = new Intent(Login.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        };
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
