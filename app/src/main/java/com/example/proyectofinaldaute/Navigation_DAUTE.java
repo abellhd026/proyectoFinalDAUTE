@@ -2,9 +2,11 @@ package com.example.proyectofinaldaute;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -19,7 +21,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Navigation_DAUTE extends AppCompatActivity {
 
-    public Button logout;
 
     private AppBarConfiguration mAppBarConfiguration;
 private ActivityNavigationDauteBinding binding;
@@ -31,14 +32,8 @@ private ActivityNavigationDauteBinding binding;
      binding = ActivityNavigationDauteBinding.inflate(getLayoutInflater());
      setContentView(binding.getRoot());
 
-     logout = findViewById(R.id.action_logout);
 
-     logout.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View view) {
-             logout();
-         }
-     });
+
         setSupportActionBar(binding.appBarNavigationDaute.toolbar);
         binding.appBarNavigationDaute.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,11 +55,7 @@ private ActivityNavigationDauteBinding binding;
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
-    public void logout() {
-        FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(Navigation_DAUTE.this, Login.class);
-        startActivity(intent);
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -73,6 +64,19 @@ private ActivityNavigationDauteBinding binding;
         return true;
     }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_logout) {
+            Toast.makeText(Navigation_DAUTE.this, "SESION CERRADA", Toast.LENGTH_SHORT).show();
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(Navigation_DAUTE.this, Login.class);
+            startActivity(intent);
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_daute);
