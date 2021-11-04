@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +19,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
     public EditText emailInput, passInput;
-    private Button login, gotoRegister;
+    private Button login, gotoRegister, btnRegistroNuevo;
+
     FirebaseAuth firebaseAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -32,6 +34,8 @@ public class Login extends AppCompatActivity {
 
         login = findViewById(R.id.btnLogin);
         gotoRegister = findViewById(R.id.btnGotoRegister);
+
+        btnRegistroNuevo = (Button) findViewById(R.id.btnRegistroNuevo);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -55,6 +59,16 @@ public class Login extends AppCompatActivity {
                 login(); 
             }
         });
+
+        btnRegistroNuevo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Login.this, "Has iniciado un nuevo registro", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Login.this, register.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         
     }
 
@@ -75,4 +89,5 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
 }

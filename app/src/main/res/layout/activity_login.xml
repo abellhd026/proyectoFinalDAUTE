@@ -105,7 +105,7 @@
             android:layout_marginTop="0dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn4"
+            android:id="@+id/btnRegistroNuevo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
