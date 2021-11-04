@@ -28,6 +28,9 @@ public class register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        emailInput = findViewById(R.id.emailInput);
+        passInput = findViewById(R.id.passInput);
+
         firebaseAuth = FirebaseAuth.getInstance();
 
         signup = findViewById(R.id.btnRegistrarme);
@@ -40,15 +43,21 @@ public class register extends AppCompatActivity {
             }
         });
 
+
         gotoLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(register.this, Login.class);
-                startActivity(intent);
+                changeView();
             }
         });
 
     }
+
+    public void changeView() {
+        Intent intent = new Intent(register.this, Login.class);
+        startActivity(intent);
+    }
+
     public void register() {
         
         String email = emailInput.getText().toString().trim();
