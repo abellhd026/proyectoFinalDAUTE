@@ -6,7 +6,7 @@
     android:background="@drawable/fondo"
     android:layout_gravity="center"
     android:orientation="vertical"
-    tools:context=".ui.Actualizar_Perfil.Actualizar_Perfil">
+    tools:context=".ui.Eliminar_Perfil.Eliminar_Perfil">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -17,6 +17,6 @@
         android:textColor="@color/yellow"
         android:layout_gravity="center"
         android:textSize="25dp"
-        android:text="Hola soy fragmento actualizar perfil" />
+        android:text="Hola soy fragmento eliminar perfil" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
