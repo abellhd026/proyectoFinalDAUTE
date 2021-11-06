@@ -47,11 +47,11 @@ private ActivityNavigationDauteBinding binding;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_actualizar, R.id.nav_eliminar_perfil)
+                R.id.nav_home, R.id.nav_actualizar, R.id.nav_eliminar_perfil, R.id.nav_categorias, R.id.nav_productos)
                 .setOpenableLayout(drawer)
                 .build();
-        //nav_host_fragment_content_navigation_daute
-        NavController navController = Navigation.findNavController(this, R.id.nav_home);
+
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_daute);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
@@ -79,10 +79,10 @@ private ActivityNavigationDauteBinding binding;
         return super.onOptionsItemSelected(item);
     }
 
-    //nav_host_fragment_content_navigation_daute
-    @Override
+
+   @Override
     public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_home);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navigation_daute);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }

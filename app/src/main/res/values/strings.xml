@@ -12,6 +12,7 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_actualizar">Actualizar Perfil</string>
     <string name="menu_eliminar">Eliminar Perfil</string>
+    <string name="menu_categorias">Agregar Categorias</string>
+    <string name="menu_productos">Agregar Productos</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -4,14 +4,6 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
 
         <item
             android:id="@+id/nav_actualizar"
@@ -22,5 +14,15 @@
             android:id="@+id/nav_eliminar_perfil"
             android:icon="@drawable/ic_eliminar"
             android:title="@string/menu_eliminar" />
+
+        <item
+            android:id="@+id/nav_categorias"
+            android:icon="@drawable/ic_categorias"
+            android:title="@string/menu_categorias" />
+
+        <item
+            android:id="@+id/nav_productos"
+            android:icon="@drawable/ic_categorias"
+            android:title="@string/menu_productos" />
     </group>
 </menu>
