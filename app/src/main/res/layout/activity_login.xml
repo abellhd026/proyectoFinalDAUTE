@@ -115,7 +115,7 @@
             android:textColorHint="@color/design_default_color_error"
             android:background="@color/material_on_surface_stroke"
             android:text="Registrate"
-            android:textColor="@color/red"
+            android:textColor="@color/white"
             android:layout_marginTop="0dp"/>
 
     </LinearLayout>

@@ -8,7 +8,7 @@
     tools:context=".ui.Categorias.categorias">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+   <!-- <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="350dp"
@@ -16,6 +16,103 @@
         android:textColor="@color/yellow"
         android:layout_gravity="center"
         android:textSize="25dp"
-        android:text="Hola soy fragmento Categorias" />
+        android:text="Hola soy fragmento Categorias" /> -->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_idcategoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <EditText
+            android:id="@+id/et_idcategoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_id"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="* Id Categorias"
+            android:inputType="number"
+            android:paddingLeft="1dp"
+            android:textColor="#03168B"
+            android:textSize="14dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_namecategoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+
+        <EditText
+            android:id="@+id/et_namecategoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:drawableStart="@drawable/ic_descripcion"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="* Nombre de Categoria"
+            android:inputType="text"
+            android:paddingLeft="1dp"
+            android:textColor="#03168B"
+            android:textSize="14dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/sp_estado"
+        style="@style/Widget.AppCompat.DropDownItem.Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/red"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:spinnerMode="dropdown"
+        android:textColorHint="@color/blue" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSave"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Guardar"
+            android:textColor="@color/black"
+            android:background="@drawable/ic_buutton"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnNew"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nueva Categoria"
+            android:textColor="@color/black"
+            android:background="@drawable/ic_buutton"
+            />
+    </LinearLayout>
+
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

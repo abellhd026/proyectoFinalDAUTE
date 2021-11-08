@@ -9,7 +9,7 @@
     tools:context=".ui.Eliminar_Perfil.Eliminar_Perfil">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="350dp"
@@ -17,6 +17,8 @@
         android:textColor="@color/yellow"
         android:layout_gravity="center"
         android:textSize="25dp"
-        android:text="Hola soy fragmento eliminar perfil" />
+        android:text="Hola soy fragmento eliminar perfil" /> -->
+
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>
