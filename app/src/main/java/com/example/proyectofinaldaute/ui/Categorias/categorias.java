@@ -65,7 +65,7 @@ public class categorias extends Fragment {
 
 
     private void saveServer (final Context context, final int id_cat, final String name_cat, final int est_cat){
-        String url = "https://defunctive-loran.000webhostapp.com/guardarCategotia.php";
+        String url = "https://defunctive-loran.000webhostapp.com/guardarCategoria.php";
 
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>(){
 
