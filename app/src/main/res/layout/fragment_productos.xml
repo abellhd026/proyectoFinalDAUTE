@@ -18,4 +18,6 @@
         android:textSize="25dp"
         android:text="Hola soy fragmento productos" />
 
+
+
 </androidx.appcompat.widget.LinearLayoutCompat>

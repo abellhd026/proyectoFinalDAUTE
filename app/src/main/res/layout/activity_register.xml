@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/fondo"
+    android:background="@drawable/img1"
     tools:context=".register">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
         android:layout_gravity="center"
-        android:text="Registro de usuario"
+        android:text="Registro de nuevo usuario"
         android:textStyle="bold"
         android:textSize="20dp"
         android:textColor="@color/black"
@@ -27,7 +27,7 @@
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:src="@drawable/usuario" />
+        android:src="@drawable/agregar" />
     <EditText
         android:id="@+id/emailInput"
         android:layout_width="280dp"
