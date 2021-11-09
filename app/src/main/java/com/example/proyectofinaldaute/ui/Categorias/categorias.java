@@ -58,6 +58,7 @@ public class  categorias extends Fragment implements View.OnClickListener {
 
         return inflater.inflate(R.layout.fragment_categorias, container, false);
     }
+
     //HACER ACA EL METODO PARA VALIDACION DE DATOS
     public boolean validarDatos(String code, String name) {
         if (code.length() == 0 || nombre.length() == 0) {
@@ -79,22 +80,17 @@ public class  categorias extends Fragment implements View.OnClickListener {
             if (estado.getSelectedItemPosition() > 0) {
 
                 // Metodo que guarda  la informacion en la base de datos
-                saveServer(getBaseContext(), Integer.parseInt(code), name, Integer.parseInt(datoSelected));
+                saveServer(getContext(), Integer.parseInt(code), name, Integer.parseInt(datoSelected));
             } else {
 
                 // Muestra un mensaje si el usuario No ha seleccionado un estado
-                Toast.makeText(MainActivity.this, "Seleccione un estado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Seleccione un estado", Toast.LENGTH_SHORT).show();
             }
         } else {
 
             // Muestra un mensaje si el usuario No ha ingresado datos
-            Toast.makeText(MainActivity.this, "Seleccione un estado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Seleccione un estado", Toast.LENGTH_SHORT).show();
         }
-    }
-
-
-    private Context getBaseContext() {
-        return null;
     }
 
 
