@@ -70,7 +70,32 @@ public class  categorias extends Fragment implements View.OnClickListener {
     }
 
     //HACER ACA EL EVENTO ONCLICK DEL BOTON GUARDAR
-   
+    @Override
+    public void onClick(View view) {
+        String code = id.getText().toString();
+        String name = id.getText().toString();
+
+        if (validarDatos(code, name)) { // Funcion que retorna true si hay datos ingresados
+            if (estado.getSelectedItemPosition() > 0) {
+
+                // Metodo que guarda  la informacion en la base de datos
+                saveServer(getBaseContext(), Integer.parseInt(code), name, Integer.parseInt(datoSelected));
+            } else {
+
+                // Muestra un mensaje si el usuario No ha seleccionado un estado
+                Toast.makeText(MainActivity.this, "Seleccione un estado", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+
+            // Muestra un mensaje si el usuario No ha ingresado datos
+            Toast.makeText(MainActivity.this, "Seleccione un estado", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    private Context getBaseContext() {
+        return null;
+    }
 
 
     private void saveServer (final Context context, final int id_cat, final String name_cat, final int est_cat){
