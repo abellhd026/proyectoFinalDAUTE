@@ -22,6 +22,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.proyectofinaldaute.MainActivity;
 import com.example.proyectofinaldaute.MySingleton;
 import com.example.proyectofinaldaute.R;
 
@@ -33,6 +34,8 @@ import java.util.Map;
 
 
 public class categorias extends Fragment {
+
+
     private EditText id, nombre;
     private Spinner estado;
     private Button save;
@@ -57,6 +60,26 @@ public class categorias extends Fragment {
     }
 
     //HACER ACA EL EVENTO ON CLIC DEL BOTON GUARDAR
+    save.setOnClickListener(new View.OnClickListener() {
+        @Override
+                public void onClick(view v) {
+            String code = id.getText().toString();
+            String name = nombre.getText().toString();
+
+            if (validarDatos(code, name)) {
+                if (estado.getSelectedItemPosition() > 0) {
+
+                    saveServer(getBaseContext(), Integer.parseInt(code),name, Integer.parseInt(datoSelected));
+                } else {
+
+                    Toast.makeText(MainActivity.this, "Seleccione un estado", Toast.LENGTH_SHORT).show();
+                }
+            }else {
+
+                Toast.makeText(MainActivity.this, "Seleccione un estado", Toast.LENGTH_SHORT).show();
+            }
+        }
+    });
 
 
     //HACER ACA EL METODO PARA VALIDACION DE DATOS
