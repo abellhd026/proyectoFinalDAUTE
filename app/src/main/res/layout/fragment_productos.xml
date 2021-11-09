@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
+    android:background="@drawable/img1"
     android:orientation="vertical"
     tools:context=".ui.Productos.productos">
 
@@ -46,10 +46,10 @@
                     android:paddingLeft="1dp"
                     android:drawableStart="@drawable/ic_id"
                     android:ems="10"
-                    android:background="@color/cardview_shadow_start_color"
+                    android:background="@color/common_google_signin_btn_text_dark_disabled"
                     android:hint="* Id Producto"
                     android:inputType="text"
-                    android:textColor="#03168B"
+                    android:textColor="@color/black"
                     android:textSize="14dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,8 +73,8 @@
                     android:ems="10"
                     android:hint="* Nombre del Producto"
                     android:inputType="text"
-                    android:background="@color/cardview_shadow_start_color"
-                    android:textColor="#03168B"
+                    android:background="@color/common_google_signin_btn_text_dark_disabled"
+                    android:textColor="@color/black"
                     android:textSize="14dp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,9 +97,9 @@
                     android:paddingLeft="1dp"
                     android:drawableStart="@drawable/ic_descripcion"
                     android:textSize="14dp"
-                    android:textColor="#03168B"
+                    android:textColor="@color/black"
                     android:hint="Descripción del Producto"
-                    android:background="@color/cardview_shadow_start_color"
+                    android:background="@color/common_google_signin_btn_text_dark_disabled"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,10 +121,10 @@
                     android:paddingLeft="1dp"
                     android:drawableStart="@drawable/ic_stock"
                     android:ems="10"
-                    android:background="@color/cardview_shadow_start_color"
+                    android:background="@color/common_google_signin_btn_text_dark_disabled"
                     android:hint="* Stock"
                     android:inputType="numberDecimal"
-                    android:textColor="#03168B"
+                    android:textColor="@color/black"
                     android:textSize="14dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -146,10 +146,10 @@
                     android:paddingLeft="1dp"
                     android:drawableStart="@drawable/ic_money"
                     android:ems="10"
-                    android:background="@color/cardview_shadow_start_color"
+                    android:background="@color/common_google_signin_btn_text_dark_disabled"
                     android:hint="* Precio"
                     android:inputType="numberDecimal"
-                    android:textColor="#03168B"
+                    android:textColor="@color/black"
                     android:textSize="14dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -173,7 +173,8 @@
                     android:ems="10"
                     android:hint="* Unidad de Medida (U, MTS, ROLL, PIE)"
                     android:inputType="text"
-                    android:textColor="#03168B"
+                    android:background="@color/common_google_signin_btn_text_dark_disabled"
+                    android:textColor="@color/black"
                     android:textSize="14dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -187,9 +188,9 @@
                 android:paddingRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:textColorHint="@color/blue"
+                android:textColorHint="@color/black"
                 android:spinnerMode="dropdown"
-                android:background="@drawable/ic_buutton"
+                android:background="@color/common_google_signin_btn_text_dark_disabled"
                 style="@style/Widget.AppCompat.DropDownItem.Spinner" />
 
             <!-- android:entries="@array/estadoCategorias"-->
@@ -203,10 +204,10 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:textColorHint="@color/blue"
-                android:spinnerMode="dropdown"
-                android:entries="@array/sp_fk"
-                android:background="@drawable/estilospinner"
-                style="@style/Widget.AppCompat.DropDownItem.Spinner"/>
+                android:spinnerMode="dropdown"/>
+            <!-- android:entries="@array/sp_fk" -->
+              <!--  android:background="@drawable/estilospinner"
+                style="@style/Widget.AppCompat.DropDownItem.Spinner"-->
 
 
             <TextView
@@ -216,7 +217,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:text="yyyy-MM-dd HH:mm:ss" />
 
 
@@ -261,6 +262,7 @@
                 android:layout_height="30dp"/>
 
         </LinearLayout>
+
     </ScrollView>
 
 

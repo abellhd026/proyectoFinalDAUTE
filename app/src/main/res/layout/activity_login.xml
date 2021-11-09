@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/fondo"
+    android:background="@drawable/img1"
     tools:context=".Login">
 
     <TextView
@@ -15,8 +15,9 @@
         android:layout_marginTop="75dp"
         android:layout_gravity="center"
         android:text="Inicio de sesion"
+        android:fontFamily="serif"
         android:textStyle="bold"
-        android:textSize="20dp"
+        android:textSize="25dp"
         android:textColor="@color/black"
         />
 
@@ -38,7 +39,7 @@
         android:drawableStart="@drawable/ic_mail"
         android:textSize="18dp"
         android:hint=" Escriba su correo electronico"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine" />
@@ -59,7 +60,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
             android:textSize="15dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:ems="10"
             android:hint="  Escriba su contraseña"
             android:gravity="start|top"
@@ -71,15 +72,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_buutton"
-        android:textColor="@color/black"
-<<<<<<< Updated upstream
         android:textSize="18dp"
-=======
->>>>>>> Stashed changes
         android:layout_gravity="center"
         android:layout_marginTop="17dp"
-        android:fontFamily="sans-serif-thin"
-        android:textStyle="bold"
         android:text="Ingresar" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -87,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:background="@color/material_on_surface_stroke"
         android:text="¿olvidaste tu contraseña?"
         android:layout_marginTop="22dp"/>
@@ -105,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:background="@color/material_on_surface_stroke"
             android:text="¿No tienes cuenta?"
             android:layout_marginTop="0dp"/>
@@ -119,7 +114,7 @@
             android:textColorHint="@color/design_default_color_error"
             android:background="@color/material_on_surface_stroke"
             android:text="Registrate"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_marginTop="0dp"/>
 
     </LinearLayout>
