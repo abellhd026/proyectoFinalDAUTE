@@ -1,11 +1,8 @@
 package com.example.proyectofinaldaute.ui.Categorias;
 
-import android.app.DownloadManager;
 import android.content.Context;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -33,7 +30,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class categorias extends Fragment {
+@SuppressWarnings("ALL")
+public class  categorias extends Fragment implements View.OnClickListener {
 
 
     private EditText id, nombre;
@@ -56,33 +54,23 @@ public class categorias extends Fragment {
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         estado.setAdapter(adapter);
 
+        save.setOnClickListener(this);
+
         return inflater.inflate(R.layout.fragment_categorias, container, false);
     }
-
-    //HACER ACA EL EVENTO ON CLIC DEL BOTON GUARDAR
-    save.setOnClickListener(new View.OnClickListener() {
-        @Override
-                public void onClick(view v) {
-            String code = id.getText().toString();
-            String name = nombre.getText().toString();
-
-            if (validarDatos(code, name)) {
-                if (estado.getSelectedItemPosition() > 0) {
-
-                    saveServer(getBaseContext(), Integer.parseInt(code),name, Integer.parseInt(datoSelected));
-                } else {
-
-                    Toast.makeText(MainActivity.this, "Seleccione un estado", Toast.LENGTH_SHORT).show();
-                }
-            }else {
-
-                Toast.makeText(MainActivity.this, "Seleccione un estado", Toast.LENGTH_SHORT).show();
-            }
-        }
-    });
-
-
     //HACER ACA EL METODO PARA VALIDACION DE DATOS
+    public boolean validarDatos(String code, String name) {
+        if (code.length() == 0 || nombre.length() == 0) {
+            id.setError("Ingrese un ID");
+            nombre.setError("Ingrese un Nombre");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    //HACER ACA EL EVENTO ONCLICK DEL BOTON GUARDAR
+   
 
 
     private void saveServer (final Context context, final int id_cat, final String name_cat, final int est_cat){
