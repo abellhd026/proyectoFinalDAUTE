@@ -72,7 +72,10 @@
         android:layout_height="wrap_content"
         android:background="@drawable/ic_buutton"
         android:textColor="@color/black"
+<<<<<<< Updated upstream
         android:textSize="18dp"
+=======
+>>>>>>> Stashed changes
         android:layout_gravity="center"
         android:layout_marginTop="17dp"
         android:fontFamily="sans-serif-thin"
