@@ -4,11 +4,17 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -27,41 +33,33 @@ import java.util.Map;
 
 
 public class categorias extends Fragment {
-
+    private EditText id, nombre;
+    private Spinner estado;
+    private Button save;
+    String datoSelected = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View root = inflater.inflate(R.layout.fragment_categorias, container, false);
+
+        id = root.findViewById(R.id.id_cat);
+        nombre = root.findViewById(R.id.nombre_cat);
+        estado = root.findViewById(R.id.estado_cat);
+        save = root.findViewById(R.id.btnSave);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.estadoCategorias, R.layout.support_simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        estado.setAdapter(adapter);
+
         return inflater.inflate(R.layout.fragment_categorias, container, false);
     }
 
+    //HACER ACA EL EVENTO ON CLIC DEL BOTON GUARDAR
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //HACER ACA EL METODO PARA VALIDACION DE DATOS
 
 
     private void saveServer (final Context context, final int id_cat, final String name_cat, final int est_cat){

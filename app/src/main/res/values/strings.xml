@@ -14,5 +14,10 @@
     <string name="menu_eliminar">Eliminar Perfil</string>
     <string name="menu_categorias">Agregar Categorias</string>
     <string name="menu_productos">Agregar Productos</string>
+    <string-array name="estadoCategorias">
+        <item>Seleccione estado categoria</item>
+        <item>1</item>
+        <item>0</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>
