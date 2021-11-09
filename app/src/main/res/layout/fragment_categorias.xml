@@ -27,7 +27,7 @@
         android:paddingRight="20dp">
 
         <EditText
-            android:id="@+id/et_idcategoria"
+            android:id="@+id/id_cat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_id"
@@ -50,7 +50,7 @@
 
 
         <EditText
-            android:id="@+id/et_namecategoria"
+            android:id="@+id/nombre_cat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
@@ -65,7 +65,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
-        android:id="@+id/sp_estado"
+        android:id="@+id/estado_cat"
         style="@style/Widget.AppCompat.DropDownItem.Spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -74,6 +74,7 @@
         android:layout_marginRight="20dp"
         android:background="@color/red"
         android:paddingLeft="20dp"
+
         android:paddingRight="20dp"
         android:spinnerMode="dropdown"
         android:textColorHint="@color/blue" />
