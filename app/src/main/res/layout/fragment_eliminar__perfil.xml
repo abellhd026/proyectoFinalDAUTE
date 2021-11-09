@@ -82,4 +82,75 @@
         android:text=" Eliminar perfil " />
 
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:layout_gravity="center"
+        android:text="Eliminar Perfil"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        />
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/eliminar" />
+
+    <EditText
+        android:id="@+id/emailInput"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:drawableStart="@drawable/ic_mail"
+        android:textSize="18dp"
+        android:hint=" Escriba su correo electronico"
+        android:textColor="@color/white"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
+
+    <!--
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="Password">*/
+</com.google.android.material.textfield.TextInputLayout> -->
+
+
+    <EditText
+        android:id="@+id/passInput"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:textSize="15dp"
+        android:textColor="@color/white"
+        android:ems="10"
+        android:hint="  Escriba su contraseña"
+        android:gravity="start|top"
+        android:drawableStart="@drawable/ic_key"
+        android:inputType="textPassword" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_buutton"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="22dp"
+        android:fontFamily="sans-serif-thin"
+        android:textStyle="bold"
+        android:text="Eliminar perfil" />
+
+
 </androidx.appcompat.widget.LinearLayoutCompat>
