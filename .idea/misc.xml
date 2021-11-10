@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/Giovanni/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/drawable/ic_buutton.xml" value="0.2203125" />
         <entry key="..\:/Users/Giovanni/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/drawable/ic_id.xml" value="0.2203125" />
+        <entry key="..\:/Users/Giovanni/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/drawable/ic_stock.xml" value="0.15185185185185185" />
         <entry key="..\:/Users/Giovanni/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/Giovanni/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Giovanni/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/layout/activity_navigation_daute.xml" value="0.22" />
@@ -12,7 +13,7 @@
         <entry key="..\:/Users/Giovanni/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/layout/app_bar_navigation_daute.xml" value="0.1" />
         <entry key="..\:/Users/Giovanni/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/layout/content_navigation_daute.xml" value="0.22" />
         <entry key="..\:/Users/Giovanni/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/layout/fragment_actualizar__perfil.xml" value="0.2" />
-        <entry key="..\:/Users/Giovanni/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/layout/fragment_categorias.xml" value="0.1634963768115942" />
+        <entry key="..\:/Users/Giovanni/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/layout/fragment_categorias.xml" value="0.22" />
         <entry key="..\:/Users/Giovanni/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/layout/fragment_eliminar__perfil.xml" value="0.1634963768115942" />
         <entry key="..\:/Users/Giovanni/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/layout/fragment_gallery.xml" value="0.1634963768115942" />
         <entry key="..\:/Users/Giovanni/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/layout/fragment_home.xml" value="0.1" />

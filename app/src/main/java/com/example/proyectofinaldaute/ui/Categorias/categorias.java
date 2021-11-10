@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -36,7 +38,7 @@ public class  categorias extends Fragment implements View.OnClickListener {
 
     private EditText id, nombre;
     private Spinner estado;
-    private Button save;
+    private Button save, delete;
     String datoSelected = "";
 
     @Override
@@ -49,47 +51,72 @@ public class  categorias extends Fragment implements View.OnClickListener {
         nombre = root.findViewById(R.id.nombre_cat);
         estado = root.findViewById(R.id.estado_cat);
         save = root.findViewById(R.id.btnSave);
+        delete = root.findViewById(R.id.btndelete);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.estadoCategorias, R.layout.support_simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         estado.setAdapter(adapter);
 
-        save.setOnClickListener(this);
+        //Evento del Spinner
+        estado.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-        return inflater.inflate(R.layout.fragment_categorias, container, false);
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if(estado.getSelectedItemPosition() > 0){
+                    datoSelected = estado.getSelectedItem().toString();
+                }else {
+                    datoSelected = "";
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        save.setOnClickListener(this);
+        delete.setOnClickListener(this);
+
+        return root;
     }
 
     //HACER ACA EL METODO PARA VALIDACION DE DATOS
     public boolean validarDatos(String code, String name) {
-        if (code.length() == 0 || nombre.length() == 0) {
+        if (code.length() == 0) {
             id.setError("Ingrese un ID");
+
+        } else if( nombre.length() == 0) {
             nombre.setError("Ingrese un Nombre");
-            return false;
-        } else {
-            return true;
+        } else if (estado.getSelectedItemPosition() == 0) {
+            Toast.makeText(getContext(), "Debe seleccionar un estado para la categoria", Toast.LENGTH_SHORT).show();
         }
+        return true;
     }
 
     //HACER ACA EL EVENTO ONCLICK DEL BOTON GUARDAR
     @Override
     public void onClick(View view) {
-        String code = id.getText().toString();
-        String name = id.getText().toString();
 
-        if (validarDatos(code, name)) { // Funcion que retorna true si hay datos ingresados
-            if (estado.getSelectedItemPosition() > 0) {
+        switch (view.getId()){
+            case R.id.btnSave:
 
-                // Metodo que guarda  la informacion en la base de datos
-                saveServer(getContext(), Integer.parseInt(code), name, Integer.parseInt(datoSelected));
-            } else {
+                String code = id.getText().toString();
+                String name = nombre.getText().toString();
 
-                // Muestra un mensaje si el usuario No ha seleccionado un estado
-                Toast.makeText(getContext(), "Seleccione un estado", Toast.LENGTH_SHORT).show();
-            }
-        } else {
+                if (validarDatos(code, name)) { // Funcion que retorna true si hay datos ingresados
+                    if (estado.getSelectedItemPosition() > 0) {
 
-            // Muestra un mensaje si el usuario No ha ingresado datos
-            Toast.makeText(getContext(), "Seleccione un estado", Toast.LENGTH_SHORT).show();
+                        // Metodo que guarda  la informacion en la base de datos
+                        saveServer(getContext(), Integer.parseInt(code), name, Integer.parseInt(datoSelected));
+                    }
+                }
+
+                break;
+
+            case R.id.btndelete:
+                new_categories();
+                break;
+            default:
         }
     }
 
@@ -122,7 +149,7 @@ public class  categorias extends Fragment implements View.OnClickListener {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, "Error en la conexion" + error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "No se puedo guardar. \n" + "Intentelo más tarde.", Toast.LENGTH_SHORT).show();
             }
         }){
             protected Map<String, String> getParams() throws AuthFailureError{
@@ -137,9 +164,16 @@ public class  categorias extends Fragment implements View.OnClickListener {
             }
 
         };
+
         MySingleton.getInstance(context).addToRequestQueue(request);
+
     }//Fin del metodo saveServer
 
-
+    //metodo para el boton nueva categoria
+    private void new_categories() {
+        id.setText(null);
+        nombre.setText(null);
+        estado.setSelection(0);
+    }
 
 }
