@@ -38,7 +38,7 @@
                 android:paddingRight="20dp">
 
                 <EditText
-                    android:id="@+id/et_id"
+                    android:id="@+id/id_prod"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -63,7 +63,7 @@
                 android:paddingRight="20dp">
 
                 <EditText
-                    android:id="@+id/et_nombre_prod"
+                    android:id="@+id/nom_prod"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
@@ -88,7 +88,7 @@
                 android:paddingRight="20dp">
 
                 <EditText
-                    android:id="@+id/et_descripcion"
+                    android:id="@+id/desc_prod"
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:textAppearance="?android:attr/textAppearanceLarge"
@@ -105,7 +105,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/ti_stock"
+                android:id="@+id/stock_produ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -113,7 +113,7 @@
                 android:paddingRight="20dp">
 
                 <EditText
-                    android:id="@+id/et_stock"
+                    android:id="@+id/stock_prod"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
@@ -130,7 +130,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/ti_precio"
+                android:id="@+id/precio_produ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -138,7 +138,7 @@
                 android:paddingRight="20dp">
 
                 <EditText
-                    android:id="@+id/et_precio"
+                    android:id="@+id/precio_prod"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
@@ -155,7 +155,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/ti_unidadmedida"
+                android:id="@+id/med_produ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -163,7 +163,7 @@
                 android:paddingRight="20dp">
 
                 <EditText
-                    android:id="@+id/et_unidadmedida"
+                    android:id="@+id/med_prod"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
@@ -180,9 +180,9 @@
 
 
             <Spinner
-                android:id="@+id/sp_estadoProductos"
+                android:id="@+id/est_prod"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
@@ -195,30 +195,20 @@
 
             <!-- android:entries="@array/estadoCategorias"-->
             <Spinner
-                android:id="@+id/sp_fk_categoria"
+                android:id="@+id/fk_categorias"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:textColorHint="@color/blue"
+                android:textColorHint="@color/black"
+                android:background="@color/common_google_signin_btn_text_dark_disabled"
                 android:spinnerMode="dropdown"/>
             <!-- android:entries="@array/sp_fk" -->
               <!--  android:background="@drawable/estilospinner"
                 style="@style/Widget.AppCompat.DropDownItem.Spinner"-->
-
-
-            <TextView
-                android:id="@+id/tv_fechahora"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/black"
-                android:text="yyyy-MM-dd HH:mm:ss" />
 
 
             <LinearLayout
@@ -230,7 +220,7 @@
                 android:layout_marginRight="20dp">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnSave"
+                    android:id="@+id/btnSaveP"
                     style="@style/Widget.AppCompat.Button.Borderless.Colored"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
