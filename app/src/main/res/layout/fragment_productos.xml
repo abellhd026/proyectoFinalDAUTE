@@ -236,12 +236,12 @@
                     android:layout_weight="0.1" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnNew"
+                    android:id="@+id/btnView"
                     style="@style/Widget.AppCompat.Button.Borderless.Colored"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Nuevo Producto"
+                    android:text="Ver Listado"
                     android:textColor="@color/black"
                     android:background="@drawable/ic_buutton"/>
 

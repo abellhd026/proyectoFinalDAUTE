@@ -1,6 +1,7 @@
 package com.example.proyectofinaldaute.ui.Productos;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,7 +23,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.proyectofinaldaute.MainActivity;
 import com.example.proyectofinaldaute.MySingleton;
+import com.example.proyectofinaldaute.Navigation_DAUTE;
 import com.example.proyectofinaldaute.R;
 import com.example.proyectofinaldaute.dto_categorias;
 import com.google.android.material.textfield.TextInputEditText;
@@ -39,9 +42,10 @@ import java.util.Map;
 public class productos extends Fragment {
     private EditText id, nombre, descripcion, stock, precio, medida;
     private Spinner estado, categoria;
-    private Button saved;
+    private Button saved, viewP;
 
-
+    ArrayList<String> lista = null;
+    ArrayList<dto_categorias> listaCategorias;
     String datoSelected = "";
     String datoSelectedC = "";
 
@@ -61,7 +65,7 @@ public class productos extends Fragment {
         estado =  view.findViewById(R.id.est_prod);
         categoria =  view.findViewById(R.id.fk_categorias);
         saved = view.findViewById(R.id.btnSaveP);
-
+        viewP = view.findViewById(R.id.btnView);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.estadoProductos, R.layout.support_simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -130,6 +134,14 @@ public class productos extends Fragment {
             }
         });
 
+        viewP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         return view;
 
@@ -189,19 +201,53 @@ public class productos extends Fragment {
 
 
 
-    public void mostrarCategorias(Context context) {
+    public void fk_categorias(final Context context) {
+        listaCategorias = new ArrayList<dto_categorias>();
+        lista = new ArrayList<String>();
+        lista.add("Seleccione Categoria");
+        String url = "https://defunctive-loran.000webhostapp.com/buscarCategorias.php";
 
-        String url = "https://defunctive-loran.000webhostapp.com/buscarCategorias.php"; 
-
-        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getContext(), "Conexion Exitosa", Toast.LENGTH_SHORT).show();
+                try {
+                    JSONArray array = new JSONArray(response);
+                    int totalEncontrados = array.length();
+                    dto_categorias objCategorias = new dto_categorias();
+
+                    for (int i = 1; i < array.length(); i++) {
+                        JSONObject categoriasObject = array.getJSONObject(i);
+                        int id_categoria = categoriasObject.getInt("id");
+                        String nombre_categoria = categoriasObject.getString("nombre");
+                        int estado_categoria = Integer.parseInt(categoriasObject.getString("estado"));
+
+                        objCategorias = new dto_categorias(id_categoria, nombre_categoria, estado_categoria);
+
+                        objCategorias.setNombre(nombre_categoria);
+                        objCategorias.setEstado(estado_categoria);
+
+                        listaCategorias.add(objCategorias);
+
+                        lista.add(listaCategorias.get(i).getId()+"-"+listaCategorias.get(i).getNombre());
+
+
+                        ArrayAdapter<String> adaptador = new ArrayAdapter<>(getContext(),R.layout.support_simple_spinner_dropdown_item, lista);
+                        adaptador.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                        categoria.setAdapter(adaptador);
+
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "Error en la conexion a Internet", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "ERROR EN LA CONEXION DE INTERNET", Toast.LENGTH_SHORT).show();
             }
         });
     }

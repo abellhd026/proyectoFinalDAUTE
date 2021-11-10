@@ -10,17 +10,8 @@
     android:layout_margin="10dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="monospace"
-        android:text="Bienvenidos"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="35sp">
-    </TextView>
-
-
-
-
+    <ListView
+        android:id="@+id/listviewProductos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
