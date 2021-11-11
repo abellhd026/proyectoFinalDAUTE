@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
                 ArrayList<String> values = new ArrayList<String>();
 
-                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
 
                 try {
 

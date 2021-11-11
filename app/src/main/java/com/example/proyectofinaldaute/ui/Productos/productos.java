@@ -40,7 +40,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class productos extends Fragment {
+public class productos extends Fragment implements View.OnClickListener {
     private EditText id, nombre, descripcion, stock, precio, medida;
     private Spinner estado, categoria;
     private Button saved, viewP;
@@ -81,25 +81,7 @@ public class productos extends Fragment {
         // Inflate the layout for this fragmen
 
 
-        saved.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String code = id.getText().toString();
-                String Nombre = nombre.getText().toString();
-                String Descripcion = descripcion.getText().toString();
-                String Stock = stock.getText().toString();
-                String Precio = precio.getText().toString();
-                String Medida = medida.getText().toString();
-                String Estado = datoSelected;
-                String Categoria = datoSelectedC;
-
-
-                Toast.makeText(getContext(), "Guardando...", Toast.LENGTH_SHORT).show();
-                saveProductos(getContext(),code,Nombre,Descripcion,Stock,Precio,Medida,Estado,Categoria);
-
-
-            }
-        });
+        saved.setOnClickListener(this);
 
 
         estado.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -219,11 +201,10 @@ public class productos extends Fragment {
             @Override
             public void onResponse(String response) {
 
-                Toast.makeText(getContext(), response, Toast.LENGTH_SHORT).show();
+
 
 
                 try {
-                    Toast.makeText(getContext(), "Metodo funcionando", Toast.LENGTH_SHORT).show();
                     JSONArray array = new JSONArray(response);
 
                     int totalEncontrados = array.length();
@@ -237,7 +218,7 @@ public class productos extends Fragment {
                         String nombre_categoria = categoriasObject.getString("nombre");
                         int estado_categoria = Integer.parseInt(categoriasObject.getString("estado"));
 
-                        Toast.makeText(getContext(), id_categoria + nombre_categoria + estado_categoria, Toast.LENGTH_SHORT).show();
+
 
                         objCategorias = new dto_categorias(id_categoria, nombre_categoria, estado_categoria);
 
@@ -255,9 +236,6 @@ public class productos extends Fragment {
                         categoria.setAdapter(adaptador);
 
 
-                        Log.i("id",String.valueOf(objCategorias.getId()));
-                        Log.i("nombre",String.valueOf(objCategorias.getNombre()));
-                        Log.i("estado",String.valueOf(objCategorias.getEstado()));
                     }
 
 
@@ -277,5 +255,62 @@ public class productos extends Fragment {
         MySingleton.getInstance(context).addToRequestQueue(request);
     }
 
+    public boolean validarDatos(String code, String name, String descrip, String strock, String prec, String medid) {
+
+        if (code.length() == 0) {
+            id.setError("Ingrese ID");
+
+        }else if( name.length() == 0) {
+            nombre.setError("Ingrese Nombre");
+
+        }else if(descrip.length() == 0){
+            descripcion.setError("Ingrese Descripcion");
+
+        } else if (strock.length() == 0) {
+            stock.setError("Ingrese Stock");
+
+        } else if (prec.length() == 0) {
+            precio.setError("Ingrese Precio");
+
+        } else if (medid.length() == 0) {
+            medida.setError("Ingrese UM");
+
+        } else if (categoria.getSelectedItemPosition() == 0) {
+            Toast.makeText(getContext(), "Debe de seleccionar una categoria", Toast.LENGTH_SHORT).show();
+
+        } else if (estado.getSelectedItemPosition() == 0) {
+            Toast.makeText(getContext(), "Debe seleccionar un estado para el producto", Toast.LENGTH_SHORT).show();
+        }
+        return true;
+    }
+
+    @Override
+    public void onClick(View view) {
+            String code = id.getText().toString();
+            String Nombre = nombre.getText().toString();
+            String Descripcion = descripcion.getText().toString();
+            String Stock = stock.getText().toString();
+            String Precio = precio.getText().toString();
+            String Medida = medida.getText().toString();
+            String Estado = datoSelected;
+            String Categoria = datoSelectedC;
+
+
+            switch (view.getId()){
+                case R.id.btnSaveP:
+
+                    if (validarDatos(code, Nombre, Descripcion, Stock, Precio, Medida)) { // Funcion que retorna true si hay datos ingresados
+                        if (estado.getSelectedItemPosition() > 0  && categoria.getSelectedItemPosition() > 0) {
+
+                            // Metodo que guarda  la informacion en la base de datos
+                            Toast.makeText(getContext(), "Guardando...", Toast.LENGTH_SHORT).show();
+                            saveProductos(getContext(),code,Nombre,Descripcion,Stock,Precio,Medida,Estado,Categoria);
+                        }
+                    }
+
+                    break;
+
+            }
+        }
 
 }
