@@ -228,7 +228,9 @@ public class productos extends Fragment {
 
                         listaCategorias.add(objCategorias);
 
-                        lista.add(listaCategorias.get(i).getId()+"-"+listaCategorias.get(i).getNombre());
+                        //lista.add(listaCategorias.get(i).getId()+"-"+listaCategorias.get(i).getNombre());
+
+                        lista.add(id_categoria,nombre_categoria);
 
 
                         ArrayAdapter<String> adaptador = new ArrayAdapter<>(getContext(),R.layout.support_simple_spinner_dropdown_item, lista);
