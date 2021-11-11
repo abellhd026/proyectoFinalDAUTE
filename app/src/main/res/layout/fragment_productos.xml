@@ -195,8 +195,7 @@
                 android:layout_marginRight="20dp"
                 android:textColorHint="@color/black"
                 android:spinnerMode="dropdown"
-                android:background="@color/common_google_signin_btn_text_dark_disabled"
-                style="@style/Widget.AppCompat.DropDownItem.Spinner" />
+                android:background="@drawable/estilospinner"/>
 
             <!-- android:entries="@array/estadoCategorias"-->
 
@@ -210,7 +209,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:textColorHint="@color/black"
-                android:background="@color/common_google_signin_btn_text_dark_disabled">
+                android:background="@drawable/estilospinner">
 
             </Spinner>
 
