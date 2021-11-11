@@ -81,20 +81,20 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="70dp"
         android:layout_marginRight="20dp"
-        android:background="@color/black"
+        android:background="@drawable/estilospinner"
         android:paddingLeft="20dp"
-
         android:paddingRight="20dp"
         android:spinnerMode="dropdown"
-        android:textColorHint="@color/blue" />
+        android:textColorHint="@color/blue" >
+    </Spinner>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:orientation="horizontal"
         android:layout_marginTop="80dp"
-        android:layout_marginRight="20dp"
-        android:orientation="horizontal">
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSave"
@@ -102,9 +102,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/ic_buutton"
             android:text="Guardar"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:background="@drawable/ic_buutton"/>
 
         <Space
             android:layout_width="0dp"
@@ -117,18 +117,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-<<<<<<< Updated upstream
-            android:background="@drawable/ic_buutton"
-            android:text="borrar"
-            android:textColor="@color/black" />
-=======
             android:text="borrar"
             android:textColor="@color/black"
             android:background="@drawable/ic_buutton" />
->>>>>>> Stashed changes
     </LinearLayout>
 
     </ScrollView>
-
 
 </androidx.appcompat.widget.LinearLayoutCompat>

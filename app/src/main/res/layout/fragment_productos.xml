@@ -194,6 +194,7 @@
                 style="@style/Widget.AppCompat.DropDownItem.Spinner" />
 
             <!-- android:entries="@array/estadoCategorias"-->
+
             <Spinner
                 android:id="@+id/fk_categorias"
                 android:layout_width="match_parent"
@@ -203,13 +204,11 @@
                 android:paddingRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-<<<<<<< Updated upstream
                 android:textColorHint="@color/black"
-                android:background="@color/common_google_signin_btn_text_dark_disabled"
-=======
-                android:textColorHint="@color/white"
->>>>>>> Stashed changes
-                android:spinnerMode="dropdown"/>
+                android:background="@color/common_google_signin_btn_text_dark_disabled">
+
+            </Spinner>
+
             <!-- android:entries="@array/sp_fk" -->
               <!--  android:background="@drawable/estilospinner"
                 style="@style/Widget.AppCompat.DropDownItem.Spinner"-->
