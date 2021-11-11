@@ -44,8 +44,10 @@ public class productos extends Fragment {
     private EditText id, nombre, descripcion, stock, precio, medida;
     private Spinner estado, categoria;
     private Button saved, viewP;
-    int conta = 0;
-    
+    int conta = 0; 
+
+
+
     ArrayList<String> lista = null;
     ArrayList<dto_categorias> listaCategorias;
     String datoSelected = "";
@@ -120,11 +122,17 @@ public class productos extends Fragment {
         categoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (categoria.getSelectedItemPosition() > 0) {
-                    datoSelectedC = categoria.getSelectedItem().toString();
+                if (conta >= 1 && categoria.getSelectedItemPosition() > 0) {
+                    String item_spinner = categoria.getSelectedItem().toString();
+
+                    String s[] = item_spinner.split("-");
+
+                    datoSelectedC = s[0].trim();
+
                 } else {
                     datoSelectedC = "";
                 }
+                conta++;
             }
 
             @Override
