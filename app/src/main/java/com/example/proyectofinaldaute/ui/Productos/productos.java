@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,8 @@ public class productos extends Fragment {
     private EditText id, nombre, descripcion, stock, precio, medida;
     private Spinner estado, categoria;
     private Button saved, viewP;
-
+    int conta = 0;
+    
     ArrayList<String> lista = null;
     ArrayList<dto_categorias> listaCategorias;
     String datoSelected = "";
@@ -68,14 +70,11 @@ public class productos extends Fragment {
         viewP = view.findViewById(R.id.btnView);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.estadoProductos, R.layout.support_simple_spinner_dropdown_item);
-        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+
         estado.setAdapter(adapter);
 
 
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getContext(), R.array.estadoCategorias, R.layout.support_simple_spinner_dropdown_item);
-        adapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        categoria.setAdapter(adapter2);
-
+        fk_categorias(getContext());
 
         // Inflate the layout for this fragmen
 
@@ -194,7 +193,7 @@ public class productos extends Fragment {
             }
 
         };
-        MySingleton.getInstance(context).addToRequestQueue(request);;
+        MySingleton.getInstance(context).addToRequestQueue(request);
 
 
     }
@@ -202,6 +201,7 @@ public class productos extends Fragment {
 
 
     public void fk_categorias(final Context context) {
+
         listaCategorias = new ArrayList<dto_categorias>();
         lista = new ArrayList<String>();
         lista.add("Seleccione Categoria");
@@ -210,33 +210,46 @@ public class productos extends Fragment {
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                try {
-                    JSONArray array = new JSONArray(response);
-                    int totalEncontrados = array.length();
-                    dto_categorias objCategorias = new dto_categorias();
 
-                    for (int i = 1; i < array.length(); i++) {
+                Toast.makeText(getContext(), response, Toast.LENGTH_SHORT).show();
+
+
+                try {
+                    Toast.makeText(getContext(), "Metodo funcionando", Toast.LENGTH_SHORT).show();
+                    JSONArray array = new JSONArray(response);
+
+                    int totalEncontrados = array.length();
+
+                    dto_categorias objCategorias = null;
+
+                    for (int i = 0; i < array.length(); i++) {
+
                         JSONObject categoriasObject = array.getJSONObject(i);
-                        int id_categoria = categoriasObject.getInt("id");
+                        int id_categoria = Integer.parseInt(categoriasObject.getString("id"));
                         String nombre_categoria = categoriasObject.getString("nombre");
                         int estado_categoria = Integer.parseInt(categoriasObject.getString("estado"));
 
+                        Toast.makeText(getContext(), id_categoria + nombre_categoria + estado_categoria, Toast.LENGTH_SHORT).show();
+
                         objCategorias = new dto_categorias(id_categoria, nombre_categoria, estado_categoria);
 
-                        objCategorias.setNombre(nombre_categoria);
-                        objCategorias.setEstado(estado_categoria);
+
 
                         listaCategorias.add(objCategorias);
 
-                        //lista.add(listaCategorias.get(i).getId()+"-"+listaCategorias.get(i).getNombre());
+                        lista.add(listaCategorias.get(i).getId()+"-"+listaCategorias.get(i).getNombre());
 
-                        lista.add(id_categoria,nombre_categoria);
+                        //lista.add(id_categoria,nombre_categoria);
 
 
-                        ArrayAdapter<String> adaptador = new ArrayAdapter<>(getContext(),R.layout.support_simple_spinner_dropdown_item, lista);
-                        adaptador.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getContext(),R.layout.support_simple_spinner_dropdown_item, lista);
+                        // adaptador.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                         categoria.setAdapter(adaptador);
 
+
+                        Log.i("id",String.valueOf(objCategorias.getId()));
+                        Log.i("nombre",String.valueOf(objCategorias.getNombre()));
+                        Log.i("estado",String.valueOf(objCategorias.getEstado()));
                     }
 
 
@@ -252,6 +265,8 @@ public class productos extends Fragment {
                 Toast.makeText(getContext(), "ERROR EN LA CONEXION DE INTERNET", Toast.LENGTH_SHORT).show();
             }
         });
+
+        MySingleton.getInstance(context).addToRequestQueue(request);
     }
 
 

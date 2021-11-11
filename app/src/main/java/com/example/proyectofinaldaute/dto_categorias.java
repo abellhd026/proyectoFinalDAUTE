@@ -1,21 +1,25 @@
 package com.example.proyectofinaldaute;
 
 public class dto_categorias {
-    String id, nombre;
+    int id;
+    String nombre;
     int estado;
 
-    public dto_categorias(int id_categoria, String nombre_categoria, int estado_categoria) {
+    public dto_categorias(int id, String nombre, int estado) {
+        this.id = id;
+        this.nombre = nombre;
+        this.estado = estado;
     }
 
     public dto_categorias() {
 
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
