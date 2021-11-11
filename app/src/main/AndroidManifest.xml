@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoFinalDAUTE">
         <activity
+            android:name=".modificarProductos"
+            android:exported="true" />
+        <activity
             android:name=".register"
             android:exported="false" />
         <activity

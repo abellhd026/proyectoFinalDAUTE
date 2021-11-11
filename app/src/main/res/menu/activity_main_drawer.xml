@@ -24,5 +24,6 @@
             android:id="@+id/nav_productos"
             android:icon="@drawable/ic_categorias"
             android:title="@string/menu_productos" />
+
     </group>
 </menu>

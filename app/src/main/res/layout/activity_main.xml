@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/fondo"
+    android:background="@drawable/img1"
     android:layout_margin="10dp"
     tools:context=".MainActivity">
 
     <ListView
         android:id="@+id/listviewProductos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 </LinearLayout>
