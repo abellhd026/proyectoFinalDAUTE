@@ -1,18 +1,14 @@
 package com.example.proyectofinaldaute;
 
-public class dto_categorias {
+public class dto_productos {
     int id;
     String nombre;
-    int estado;
+    double precio;
 
-    public dto_categorias(int id, String nombre, int estado) {
+    public dto_productos(int id, String nombre, double precio) {
         this.id = id;
         this.nombre = nombre;
-        this.estado = estado;
-    }
-
-    public dto_categorias() {
-
+        this.precio = precio;
     }
 
     public int getId() {
@@ -31,12 +27,11 @@ public class dto_categorias {
         this.nombre = nombre;
     }
 
-    public int getEstado() {
-        return estado;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setEstado(int estado) {
-        this.estado = estado;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
-
 }
