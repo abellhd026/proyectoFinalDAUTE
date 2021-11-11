@@ -33,6 +33,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="56dp"
+            android:gravity="center">
+
 
 
     <EditText
@@ -46,7 +53,7 @@
         android:hint=" Escriba su correo electronico"
         android:textColor="@color/black"
         android:ems="10"
-        android:gravity="start|top"
+        android:gravity="center"
         android:inputType="textMultiLine" />
 
     <!--
@@ -119,10 +126,11 @@
             android:textColorHint="@color/design_default_color_error"
             android:background="@color/material_on_surface_stroke"
             android:text="Registrate"
-            android:textColor="@color/black"
+            android:textColor="@color/red"
             android:layout_marginTop="0dp"/>
 
     </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>
