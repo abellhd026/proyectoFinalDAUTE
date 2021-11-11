@@ -50,10 +50,13 @@ public class MainActivity extends AppCompatActivity {
         lista = new ArrayList<String>();
         String url = "https://defunctive-loran.000webhostapp.com/getAllProductos.php";
 
-        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
+                ArrayList<String> values = new ArrayList<String>();
+
+                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
 
                 try {
 
@@ -73,19 +76,19 @@ public class MainActivity extends AppCompatActivity {
 
                         objProductos = new dto_productos(id_categoria, nombre_categoria, precio);
 
-
                         listaProductos.add(objProductos);
 
                         lista.add(listaProductos.get(i).getId() + "-" + listaProductos.get(i).getNombre());
 
-                        //lista.add(id_categoria,nombre_categoria);
 
 
-                        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(),R.layout.activity_main, lista);
-                        // adaptador.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-                        listadoProductos.setAdapter(adaptador);
 
+                        values.add(String.valueOf(id_categoria) + " - " + nombre_categoria );
+
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1, values);
+                        listadoProductos.setAdapter(adapter);
                     }
+
 
 
                 } catch (JSONException e) {
