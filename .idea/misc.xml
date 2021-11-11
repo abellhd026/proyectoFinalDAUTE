@@ -27,7 +27,26 @@
         <entry key="..\:/Users/R. Marllely/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/layout/fragment_slideshow.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/R. Marllely/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/layout/nav_header_navigation_daute.xml" value="0.33" />
         <entry key="..\:/Users/R. Marllely/Desktop/demo/proyectoFinalDAUTE/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2203125" />
+<<<<<<< Updated upstream
         <entry key="..\:/Users/alhdez052/AndroidStudioProjects/proyectoFinalDAUTE/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+=======
+        <entry key="..\:/Users/R. Marllely/proyectoFinalDAUTE/app/src/main/res/drawable/ic_buutton.xml" value="0.2203125" />
+        <entry key="..\:/Users/R. Marllely/proyectoFinalDAUTE/app/src/main/res/drawable/ic_id.xml" value="0.2203125" />
+        <entry key="..\:/Users/R. Marllely/proyectoFinalDAUTE/app/src/main/res/layout/activity_login.xml" value="0.2138728323699422" />
+        <entry key="..\:/Users/R. Marllely/proyectoFinalDAUTE/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/R. Marllely/proyectoFinalDAUTE/app/src/main/res/layout/activity_navigation_daute.xml" value="0.25" />
+        <entry key="..\:/Users/R. Marllely/proyectoFinalDAUTE/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/Users/R. Marllely/proyectoFinalDAUTE/app/src/main/res/layout/app_bar_navigation_daute.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/R. Marllely/proyectoFinalDAUTE/app/src/main/res/layout/content_navigation_daute.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/R. Marllely/proyectoFinalDAUTE/app/src/main/res/layout/fragment_actualizar__perfil.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/R. Marllely/proyectoFinalDAUTE/app/src/main/res/layout/fragment_categorias.xml" value="0.25" />
+        <entry key="..\:/Users/R. Marllely/proyectoFinalDAUTE/app/src/main/res/layout/fragment_eliminar__perfil.xml" value="0.25" />
+        <entry key="..\:/Users/R. Marllely/proyectoFinalDAUTE/app/src/main/res/layout/fragment_gallery.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/R. Marllely/proyectoFinalDAUTE/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/R. Marllely/proyectoFinalDAUTE/app/src/main/res/layout/fragment_productos.xml" value="0.25" />
+        <entry key="..\:/Users/R. Marllely/proyectoFinalDAUTE/app/src/main/res/layout/fragment_slideshow.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/R. Marllely/proyectoFinalDAUTE/app/src/main/res/layout/nav_header_navigation_daute.xml" value="0.20416666666666666" />
+>>>>>>> Stashed changes
         <entry key="..\:/Users/alhdez052/AndroidStudioProjects/proyectoFinalDAUTE/app/src/main/res/layout/activity_main.xml" value="0.11096014492753623" />
         <entry key="..\:/Users/alhdez052/AndroidStudioProjects/proyectoFinalDAUTE/app/src/main/res/layout/activity_register.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/alhdez052/AndroidStudioProjects/proyectoFinalDAUTE/app/src/main/res/layout/fragment_actualizar__perfil.xml" value="0.36666666666666664" />

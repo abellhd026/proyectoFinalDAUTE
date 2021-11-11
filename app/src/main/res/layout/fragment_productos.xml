@@ -203,8 +203,12 @@
                 android:paddingRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+<<<<<<< Updated upstream
                 android:textColorHint="@color/black"
                 android:background="@color/common_google_signin_btn_text_dark_disabled"
+=======
+                android:textColorHint="@color/white"
+>>>>>>> Stashed changes
                 android:spinnerMode="dropdown"/>
             <!-- android:entries="@array/sp_fk" -->
               <!--  android:background="@drawable/estilospinner"
@@ -252,6 +256,7 @@
                 android:layout_height="30dp"/>
 
         </LinearLayout>
+
 
     </ScrollView>
 
