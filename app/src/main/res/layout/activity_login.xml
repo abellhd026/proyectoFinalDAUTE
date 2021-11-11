@@ -39,21 +39,45 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/usuario" />
 
-    <EditText
-        android:id="@+id/emailInput"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="25dp"
-        android:drawableStart="@drawable/ic_mail"
-        android:textSize="18dp"
-        android:hint=" Escriba su correo electronico"
-        android:textColor="@color/black"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="textMultiLine" />
 
-    <!--
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                app:helperText="Requerido*"
+                app:endIconMode="clear_text"
+
+                app:boxBackgroundMode="outline"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/emailInput"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="  Escriba su correo"
+                    android:drawableStart="@drawable/ic_mail"
+                    android:inputType="textEmailAddress"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                app:helperText="Requerido*"
+                app:endIconMode="password_toggle"
+
+                app:boxBackgroundMode="outline"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/passInput"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="  Escriba su correo"
+                    android:drawableStart="@drawable/ic_key"
+                    android:inputType="textEmailAddress"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,20 +85,6 @@
         android:hint="Password">*/
 </com.google.android.material.textfield.TextInputLayout> -->
 
-
-        <EditText
-            android:id="@+id/passInput"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="12dp"
-            android:textSize="15dp"
-            android:textColor="@color/black"
-            android:ems="10"
-            android:hint="  Escriba su contraseña"
-            android:gravity="start|top"
-            android:drawableStart="@drawable/ic_key"
-            android:inputType="textPassword" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogin"
