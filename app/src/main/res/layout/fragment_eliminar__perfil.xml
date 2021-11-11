@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img1"
+    android:background="@drawable/fon2"
     android:layout_gravity="center"
     android:orientation="vertical"
     tools:context=".ui.Eliminar_Perfil.Eliminar_Perfil">
@@ -79,7 +79,7 @@
         android:background="@drawable/ic_buutton"
         android:textColor="@color/black"
         android:layout_gravity="center"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="33dp"
         android:fontFamily="sans-serif"
         android:textStyle="bold"
         android:text=" Eliminar perfil " />

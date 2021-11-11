@@ -17,6 +17,9 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
+        app:itemIconTint="@color/black"
+        android:background="@drawable/fon2"
+        app:itemTextColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"

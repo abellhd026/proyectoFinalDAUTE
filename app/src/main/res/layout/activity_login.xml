@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/img1"
+    android:background="@drawable/fon2"
     tools:context=".Login">
 
     <TextView
@@ -20,15 +20,6 @@
         android:textSize="25dp"
         android:textColor="@color/black" />
 
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/usuario" />
-
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -40,7 +31,13 @@
             android:layout_marginLeft="56dp"
             android:gravity="center">
 
-
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/usuario" />
 
     <EditText
         android:id="@+id/emailInput"
@@ -87,7 +84,7 @@
         android:textSize="18dp"
         android:textColor="@color/black"
         android:layout_gravity="center"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="27dp"
         android:text="Ingresar" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -98,13 +95,13 @@
         android:textColor="@color/black"
         android:background="@color/material_on_surface_stroke"
         android:text="¿olvidaste tu contraseña?"
-        android:layout_marginTop="22dp"/>
+        android:layout_marginTop="30dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="30dp"
         android:layout_gravity="center">
 
         <androidx.appcompat.widget.AppCompatButton
@@ -124,10 +121,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
             android:textColorHint="@color/design_default_color_error"
             android:background="@color/material_on_surface_stroke"
             android:text="Registrate"
-            android:textColor="@color/red"
+            android:textColor="@color/blue"
             android:layout_marginTop="0dp"/>
 
     </LinearLayout>
