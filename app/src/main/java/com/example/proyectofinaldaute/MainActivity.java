@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +44,17 @@ public class MainActivity extends AppCompatActivity {
 
         mostrarProductos(getApplicationContext());
 
+
+        listadoProductos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, modificarProductos.class);
+                String t = (String) listadoProductos.getItemAtPosition(position);
+                intent.putExtra("valorID", t);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -61,9 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
                     JSONArray array = new JSONArray(response);
 
-                    int totalEncontrados = array.length();
-
-                    dto_productos objProductos = null;
 
                     for (int i = 0; i < array.length(); i++) {
 
@@ -71,15 +82,6 @@ public class MainActivity extends AppCompatActivity {
                         int id_categoria = Integer.parseInt(productosObject.getString("id"));
                         String nombre_categoria = productosObject.getString("nombre");
                         double precio = Double.parseDouble(productosObject.getString("precio"));
-
-
-                        objProductos = new dto_productos(id_categoria, nombre_categoria, precio);
-
-                        listaProductos.add(objProductos);
-
-                        lista.add(listaProductos.get(i).getId() + "-" + listaProductos.get(i).getNombre());
-
-
 
 
                         values.add(String.valueOf(id_categoria) + " - " + nombre_categoria );

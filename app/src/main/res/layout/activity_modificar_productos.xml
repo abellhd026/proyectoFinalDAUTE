@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/fon2"
     tools:context=".modificarProductos">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -32,7 +33,7 @@
                     android:paddingRight="20dp">
 
                     <EditText
-                        android:id="@+id/id_prod"
+                        android:id="@+id/id_producto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
@@ -57,7 +58,7 @@
                     android:paddingRight="20dp">
 
                     <EditText
-                        android:id="@+id/nom_prod"
+                        android:id="@+id/nom_producto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
@@ -82,7 +83,7 @@
                     android:paddingRight="20dp">
 
                     <EditText
-                        android:id="@+id/desc_prod"
+                        android:id="@+id/desc_producto"
                         android:layout_width="match_parent"
                         android:layout_height="75dp"
                         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -107,7 +108,7 @@
                     android:paddingRight="20dp">
 
                     <EditText
-                        android:id="@+id/stock_prod"
+                        android:id="@+id/stock_producto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
@@ -132,7 +133,7 @@
                     android:paddingRight="20dp">
 
                     <EditText
-                        android:id="@+id/precio_prod"
+                        android:id="@+id/precio_producto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
@@ -157,7 +158,7 @@
                     android:paddingRight="20dp">
 
                     <EditText
-                        android:id="@+id/med_prod"
+                        android:id="@+id/med_producto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
@@ -217,7 +218,7 @@
                     android:layout_marginRight="20dp">
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnmodificar"
+                        android:id="@+id/edit"
                         style="@style/Widget.AppCompat.Button.Borderless.Colored"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -233,7 +234,7 @@
                         android:layout_weight="0.1" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btneliminar"
+                        android:id="@+id/delete"
                         style="@style/Widget.AppCompat.Button.Borderless.Colored"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
