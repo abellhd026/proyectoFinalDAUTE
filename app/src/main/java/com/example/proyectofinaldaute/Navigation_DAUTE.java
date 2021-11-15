@@ -47,7 +47,7 @@ private ActivityNavigationDauteBinding binding;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_actualizar, R.id.nav_eliminar_perfil, R.id.nav_categorias, R.id.nav_productos)
+                R.id.nav_home, R.id.nav_actualizar, R.id.nav_eliminar_perfil, R.id.nav_categorias, R.id.nav_productos, R.id.nav_modificar_productos)
                 .setOpenableLayout(drawer)
                 .build();
 

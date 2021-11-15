@@ -26,5 +26,10 @@
             android:icon="@drawable/ic_categorias"
             android:title="@string/menu_productos" />
 
+        <item
+            android:id="@+id/nav_modificar_productos"
+            android:icon="@drawable/ic_categorias"
+            android:title="@string/menu_modificar_productos" />
+
     </group>
 </menu>

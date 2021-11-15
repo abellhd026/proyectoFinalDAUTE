@@ -34,4 +34,10 @@
         android:name="com.example.proyectofinaldaute.ui.Productos.productos"
         android:label="@string/menu_productos"
         tools:layout="@layout/fragment_productos" />
+
+    <fragment
+        android:id="@+id/nav_modificar_productos"
+        android:name="com.example.proyectofinaldaute.ui.Modificar_Productos.Modificar_Productos"
+        android:label="@string/menu_modificar_productos"
+        tools:layout="@layout/fragment_modificar__productos" />
 </navigation>
