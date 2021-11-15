@@ -113,6 +113,30 @@ public class modificarProductos extends AppCompatActivity {
 
                 }
             }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "Error en la conexion" + error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String>  map = new HashMap<>();
+                map.put("Content-Type", "application/json; charset=utf-8");
+                map.put("Accept", "application/json");
+                map.put("id_prod", String.valueOf(id));
+                map.put("nom_prod", nombre);
+                map.put("desc_prod", descripcion);
+                map.put("stock_prod", Stock);
+                map.put("precio_prod", Precio);
+                map.put("med_prod", medida);
+                return map;
+            }
+
+        };
+        MySingleton.getInstance(context).addToRequestQueue(request);
+
+
+    }
 
 
     private void showProductsInfo(Context context, String id) {
