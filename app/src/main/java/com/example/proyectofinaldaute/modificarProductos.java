@@ -88,6 +88,31 @@ public class modificarProductos extends AppCompatActivity {
 
 
     //Crear aca el metodo para actualizar y eliminar el producto
+    private void updateProductos (final Context context, String id, String nombre, String descripcion, String Stock, String Precio, String medida) {
+        String url = "https://defunctive-loran.000webhostapp.com/actualizarProducto.php";
+
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                JSONObject requestJSON = null;
+                try {
+                    requestJSON = new JSONObject(response.toString());
+                    String estado = requestJSON.getString("estado");
+                    String mensaje = requestJSON.getString("mensaje");
+
+                    if(estado.equals("1")){
+                        Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+
+                    }else if(estado.equals("2")){
+                        Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+                    }
+
+                }catch (JSONException e){
+                    e.printStackTrace();
+                    Toast.makeText(context, "Error: " + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+
+                }
+            }
 
 
     private void showProductsInfo(Context context, String id) {
