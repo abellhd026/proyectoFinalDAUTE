@@ -1,5 +1,6 @@
 package com.example.proyectofinaldaute.ui.Productos;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,8 +45,8 @@ public class productos extends Fragment implements View.OnClickListener {
     private EditText id, nombre, descripcion, stock, precio, medida;
     private Spinner estado, categoria;
     private Button saved, viewP;
-    int conta = 0; 
-
+    int conta = 0;
+    private ProgressDialog progressDialog;
 
 
     ArrayList<String> lista = null;
@@ -70,7 +71,7 @@ public class productos extends Fragment implements View.OnClickListener {
         categoria =  view.findViewById(R.id.fk_categorias);
         saved = view.findViewById(R.id.btnSaveP);
         viewP = view.findViewById(R.id.btnView);
-
+        progressDialog = new ProgressDialog(getContext());
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.estadoProductos, R.layout.support_simple_spinner_dropdown_item);
 
         estado.setAdapter(adapter);
@@ -156,6 +157,8 @@ public class productos extends Fragment implements View.OnClickListener {
                     }else if(estado.equals("2")){
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
                     }
+
+                    progressDialog.dismiss();
 
                 }catch (JSONException e){
                     e.printStackTrace();
@@ -303,8 +306,9 @@ public class productos extends Fragment implements View.OnClickListener {
                         if (estado.getSelectedItemPosition() > 0  && categoria.getSelectedItemPosition() > 0) {
 
                             // Metodo que guarda  la informacion en la base de datos
-                            Toast.makeText(getContext(), "Guardando...", Toast.LENGTH_SHORT).show();
                             saveProductos(getContext(),code,Nombre,Descripcion,Stock,Precio,Medida,Estado,Categoria);
+                            progressDialog.setMessage("Guardando Producto..."); //esto es del progress dialog
+                            progressDialog.show();  //esto es del progress dialog
                         }
                     }
 
