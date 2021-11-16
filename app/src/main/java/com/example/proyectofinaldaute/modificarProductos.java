@@ -235,12 +235,13 @@ public class modificarProductos extends AppCompatActivity{
                 JSONObject requestJSON;
                 try {
                     requestJSON = new JSONObject(response.toString());
-                    String id = requestJSON.getString("id");
+                    String estado = requestJSON.getString("estado");
                     String mensaje = requestJSON.getString("mensaje");
 
-                    if(id.length() > 0){
+                    if(estado.equals("1")){
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
-                    }else{
+
+                    }else if(estado.equals("2")){
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
                     }
 
