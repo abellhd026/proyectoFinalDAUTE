@@ -1,5 +1,6 @@
 package com.example.proyectofinaldaute.ui.Categorias;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -40,6 +41,7 @@ public class  categorias extends Fragment implements View.OnClickListener {
     private Spinner estado;
     private Button save, delete;
     String datoSelected = "";
+    private ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,7 +54,7 @@ public class  categorias extends Fragment implements View.OnClickListener {
         estado = root.findViewById(R.id.estado_cat);
         save = root.findViewById(R.id.btnSave);
         delete = root.findViewById(R.id.btndelete);
-
+        progressDialog = new ProgressDialog(getContext());
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.estadoCategorias, R.layout.support_simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         estado.setAdapter(adapter);
@@ -108,6 +110,9 @@ public class  categorias extends Fragment implements View.OnClickListener {
 
                         // Metodo que guarda  la informacion en la base de datos
                         saveServer(getContext(), Integer.parseInt(code), name, Integer.parseInt(datoSelected));
+                        progressDialog.setMessage("Guardando categoria..."); //esto es del progress dialog
+                        progressDialog.show();  //esto es del progress dialog
+
                     }
                 }
 
@@ -136,10 +141,11 @@ public class  categorias extends Fragment implements View.OnClickListener {
 
                     if(estado.equals("1")){
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
-
                     }else if(estado.equals("2")){
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
                     }
+
+                    progressDialog.dismiss();
 
                 }catch (JSONException e){
                     e.printStackTrace();
