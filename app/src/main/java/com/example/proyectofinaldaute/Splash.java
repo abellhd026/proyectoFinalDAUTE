@@ -24,7 +24,7 @@ public class Splash extends Activity {
         };
 
         Timer tiempo = new Timer();
-        tiempo.schedule(tarea, 6000);
+        tiempo.schedule(tarea, 5000);
 
     }
 }

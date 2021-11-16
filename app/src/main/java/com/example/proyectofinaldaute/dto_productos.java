@@ -5,6 +5,9 @@ public class dto_productos {
     String nombre;
     double precio;
 
+    public dto_productos() {
+    }
+
     public dto_productos(int id, String nombre, double precio) {
         this.id = id;
         this.nombre = nombre;

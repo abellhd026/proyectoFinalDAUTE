@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class modificarProductos extends AppCompatActivity {
+public class modificarProductos extends AppCompatActivity{
     private EditText idP, nombre, desc, stock, precio, med;
     String idProducto = "";
     private Button actualizar, eliminar;
@@ -55,6 +55,19 @@ public class modificarProductos extends AppCompatActivity {
 
         showProductsInfo(getApplicationContext(),idProducto);
 
+
+       eliminar.setOnClickListener(new View.OnClickListener() {
+
+           String code = idP.getText().toString();
+
+           @Override
+           public void onClick(View view) {
+               if(code.length() == 0){
+                   borrarRegistro(getApplicationContext(), Integer.parseInt(code));
+                   Toast.makeText(modificarProductos.this, "Registro Borrado Satisfactoriamente!!", Toast.LENGTH_SHORT).show();
+               }
+           }
+       });
 
         actualizar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,4 +224,49 @@ public class modificarProductos extends AppCompatActivity {
         precio.setEnabled(true);
         med.setEnabled(true);
     }
+
+    private void borrarRegistro (Context context, final int id_cat){
+        String url = "https://defunctive-loran.000webhostapp.com/eliminarProducto.php";
+
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>(){
+
+            @Override
+            public void onResponse(String response) {
+                JSONObject requestJSON;
+                try {
+                    requestJSON = new JSONObject(response.toString());
+                    String id = requestJSON.getString("id");
+                    String mensaje = requestJSON.getString("mensaje");
+
+                    if(id.length() > 0){
+                        Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+                    }
+
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "No se Puede Modificar. \n" + "Intentelo Más Tarde.", Toast.LENGTH_SHORT).show();
+            }
+        }){
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String>  map = new HashMap<>();
+                map.put("Content-Type", "application/json; charset=utf-8");
+                map.put("Accept", "application/json");
+                map.put("id_prod", String.valueOf(id_cat));
+                return map;
+
+            }
+
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(request);
+
+    }//Fin del metodo saveServer
 }
