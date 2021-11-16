@@ -62,9 +62,9 @@ public class modificarProductos extends AppCompatActivity{
 
            @Override
            public void onClick(View view) {
-               if(code.length() == 0){
+               if(code.length() != 0){
                    borrarRegistro(getApplicationContext(), Integer.parseInt(code));
-                   Toast.makeText(modificarProductos.this, "Registro Borrado Satisfactoriamente!!", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(modificarProductos.this, "Registro Eliminado!!", Toast.LENGTH_SHORT).show();
                }
            }
        });
