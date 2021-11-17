@@ -198,7 +198,8 @@ public class modificarProductos extends AppCompatActivity{
                 map.put("stock_prod", Stock);
                 map.put("precio_prod", Precio);
                 map.put("med_prod", medida);
-                map.put("categoria", estado);
+                map.put("est_prod" , estado);
+                map.put("categoria", categoria);
 
                 return map;
             }

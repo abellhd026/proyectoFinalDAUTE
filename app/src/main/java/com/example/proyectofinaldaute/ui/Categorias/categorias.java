@@ -2,9 +2,11 @@ package com.example.proyectofinaldaute.ui.Categorias;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -104,19 +106,36 @@ public class  categorias extends Fragment implements View.OnClickListener {
         switch (view.getId()){
             case R.id.btnSave:
 
-                String code = id.getText().toString();
-                String name = nombre.getText().toString();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("¿Guardar?");
+                builder.setMessage("¿Desea guardar esta categoria?");
 
-                if (validarDatos(code, name)) { // Funcion que retorna true si hay datos ingresados
-                    if (estado.getSelectedItemPosition() > 0) {
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String code = id.getText().toString();
+                        String name = nombre.getText().toString();
 
-                        // Metodo que guarda  la informacion en la base de datos
-                        saveServer(getContext(), Integer.parseInt(code), name, Integer.parseInt(datoSelected));
-                        progressDialog.setMessage("Guardando categoria..."); //esto es del progress dialog
-                        progressDialog.show();  //esto es del progress dialog
+                        if (validarDatos(code, name)) { // Funcion que retorna true si hay datos ingresados
+                            if (estado.getSelectedItemPosition() > 0) {
+
+                                // Metodo que guarda  la informacion en la base de datos
+                                saveServer(getContext(), Integer.parseInt(code), name, Integer.parseInt(datoSelected));
+                                progressDialog.setMessage("Guardando categoria..."); //esto es del progress dialog
+                                progressDialog.show();  //esto es del progress dialog
+
+                            }
+                        }
+                    }
+                });
+                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
                     }
-                }
+                });
+
+                builder.show();
 
                 break;
 
