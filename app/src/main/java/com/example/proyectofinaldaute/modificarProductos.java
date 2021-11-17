@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +32,12 @@ import java.util.Map;
 public class modificarProductos extends AppCompatActivity{
     private EditText idP, nombre, desc, stock, precio, med;
     String idProducto = "";
+    int conta = 0;
+    String datoSelectedC = "";
     private Button actualizar, eliminar;
+    Spinner estadoP, categoriaP;
+    ArrayList<String> lista = null;
+    ArrayList<dto_categorias> listaCategorias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +60,20 @@ public class modificarProductos extends AppCompatActivity{
         med = findViewById(R.id.med_producto);
         actualizar = findViewById(R.id.edit);
         eliminar = findViewById(R.id.delete);
+        estadoP = findViewById(R.id.est_prod);
+        categoriaP = findViewById(R.id.estado_cat);
+
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.estadoProductos, R.layout.support_simple_spinner_dropdown_item);
+
+        estadoP.setAdapter(adapter);
+
 
         showProductsInfo(getApplicationContext(),idProducto);
+
+
+        fk_categorias(getApplicationContext());
+
 
 
        eliminar.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +112,30 @@ public class modificarProductos extends AppCompatActivity{
                     // LLamar aca al metodo que actualiza el registro en la base de datos (updateProductos)
                     updateProductos(getApplicationContext(), code, Nombre, Descripcion, Stock, Precio,Medida);
                 }
+
+            }
+        });
+
+
+
+        categoriaP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (conta >= 1 && categoriaP.getSelectedItemPosition() > 0) {
+                    String item_spinner = categoriaP.getSelectedItem().toString();
+
+                    String s[] = item_spinner.split("-");
+
+                    datoSelectedC = s[0].trim();
+
+                } else {
+                    datoSelectedC = "";
+                }
+                conta++;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
@@ -271,5 +314,70 @@ public class modificarProductos extends AppCompatActivity{
 
         MySingleton.getInstance(context).addToRequestQueue(request);
 
-    }//Fin del metodo saveServer
+    }
+
+
+    public void fk_categorias(final Context context) {
+
+        listaCategorias = new ArrayList<dto_categorias>();
+        lista = new ArrayList<String>();
+        lista.add("Seleccione Categoria");
+        String url = "https://defunctive-loran.000webhostapp.com/buscarCategorias.php";
+
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONArray array = new JSONArray(response);
+
+                    int totalEncontrados = array.length();
+
+                    dto_categorias objCategorias = null;
+
+                    for (int i = 0; i < array.length(); i++) {
+
+                        JSONObject categoriasObject = array.getJSONObject(i);
+                        int id_categoria = Integer.parseInt(categoriasObject.getString("id"));
+                        String nombre_categoria = categoriasObject.getString("nombre");
+                        int estado_categoria = Integer.parseInt(categoriasObject.getString("estado"));
+
+
+
+                        objCategorias = new dto_categorias(id_categoria, nombre_categoria, estado_categoria);
+
+
+
+                        listaCategorias.add(objCategorias);
+
+                        lista.add(listaCategorias.get(i).getId()+"-"+listaCategorias.get(i).getNombre());
+
+                        //lista.add(id_categoria,nombre_categoria);
+
+
+                        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item, lista);
+                        // adaptador.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                        categoriaP.setAdapter(adaptador);
+
+
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "ERROR EN LA CONEXION DE INTERNET", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        MySingleton.getInstance(context).addToRequestQueue(request);
+    }
+
+
 }
