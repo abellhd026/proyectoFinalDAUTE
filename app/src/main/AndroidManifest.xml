@@ -16,9 +16,6 @@
             android:name=".modificarCategorias"
             android:exported="true" />
         <activity
-            android:name=".editar_eliminar"
-            android:exported="false" />
-        <activity
             android:name=".Splash"
             android:exported="true"
             android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen">
