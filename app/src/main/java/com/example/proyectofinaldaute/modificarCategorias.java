@@ -1,8 +1,10 @@
 package com.example.proyectofinaldaute;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -56,17 +58,53 @@ public class modificarCategorias extends AppCompatActivity {
         actualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = idC.getText().toString().trim();
-                String Nombre = nombre.getText().toString();
 
-                updateCategory(getApplicationContext(), id, Nombre, datoSelected);
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(getApplicationContext());
+                builder2.setTitle("¿Actualizar?");
+                builder2.setMessage("¿Desea Actualizar esta categoria?");
+                Toast.makeText(getApplicationContext(), "esta en funcion!!", Toast.LENGTH_SHORT).show();
+                builder2.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String id = idC.getText().toString().trim();
+                        String Nombre = nombre.getText().toString();
+
+                        updateCategory(getApplicationContext(), id, Nombre, datoSelected);
+                    }
+                });
+
+                builder2.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
             }
         });
 
         eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                borrarCategoria(getApplicationContext(), idCategoria);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                builder.setTitle("¿Eliminar?");
+                builder.setMessage("¿Desea Eliminar esta categoria?");
+
+                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        borrarCategoria(getApplicationContext(), idCategoria);
+                    }
+                });
+
+                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+
             }
         });
 
