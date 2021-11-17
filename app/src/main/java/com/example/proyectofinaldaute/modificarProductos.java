@@ -91,8 +91,12 @@ public class modificarProductos extends AppCompatActivity{
 
 
                     // LLamar aca al metodo que actualiza el registro en la base de datos (updateProductos)
+                    updateProductos(getContext(), idP, nombre, desc, stock, precio, med);
                 }
 
+            }
+
+            private void getContext() { 
             }
         });
 
