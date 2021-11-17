@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fon2"
+    android:orientation="vertical"
+    tools:context=".modificarCategorias">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_idcategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:background="@color/material_on_surface_stroke"
+                android:paddingRight="20dp">
+
+                <EditText
+                    android:id="@+id/id_cat"
+                    android:layout_width="351dp"
+                    android:layout_height="49dp"
+                    android:background="@color/common_google_signin_btn_text_dark_disabled"
+                    android:drawableStart="@drawable/ic_id"
+                    android:drawablePadding="5dp"
+                    android:ems="10"
+                    android:hint="* Id Categorias"
+                    android:inputType="number"
+                    android:paddingLeft="1dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_namecategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+
+                <EditText
+                    android:id="@+id/nombre_cat"
+                    android:layout_width="353dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:background="@color/common_google_signin_btn_text_light_disabled"
+                    android:drawableStart="@drawable/ic_descripcion"
+                    android:drawablePadding="5dp"
+                    android:ems="10"
+                    android:hint="* Nombre de Categoria"
+                    android:inputType="text"
+                    android:paddingLeft="1dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/estado_cat"
+                style="@style/Widget.AppCompat.DropDownItem.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="70dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/estilospinner"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:spinnerMode="dropdown"
+                android:textColorHint="@color/blue" >
+            </Spinner>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="80dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnUpdate"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Actualizar"
+                    android:textColor="@color/black"
+                    android:background="@drawable/ic_buutton"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDelete"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="borrar"
+                    android:textColor="@color/black"
+                    android:background="@drawable/ic_buutton" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
