@@ -101,6 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Actualizar"
+                    android:drawableStart="@drawable/ic_descripcion"
                     android:textColor="@color/black"
                     android:background="@drawable/ic_buutton"/>
 
@@ -116,6 +117,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="borrar"
+                    android:drawableStart="@drawable/ic_borrar"
                     android:textColor="@color/black"
                     android:background="@drawable/ic_buutton" />
             </LinearLayout>
