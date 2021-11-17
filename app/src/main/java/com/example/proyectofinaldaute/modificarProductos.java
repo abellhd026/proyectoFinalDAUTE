@@ -61,16 +61,14 @@ public class modificarProductos extends AppCompatActivity{
         actualizar = findViewById(R.id.edit);
         eliminar = findViewById(R.id.delete);
         estadoProducto = findViewById(R.id.est_producto);
-        estadoCategoria = findViewById(R.id.estado_cat);
+        estadoCategoria = findViewById(R.id.est_categorias);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.estadoProductos, R.layout.support_simple_spinner_dropdown_item);
 
         estadoProducto.setAdapter(adapter);
 
 
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getApplicationContext(), R.array.estadoCategorias, R.layout.support_simple_spinner_dropdown_item);
-
-        estadoProducto.setAdapter(adapter2);
+        fk_categorias(getApplicationContext());
 
 
 
@@ -118,9 +116,43 @@ public class modificarProductos extends AppCompatActivity{
             }
         });
 
+        estadoProducto.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (estadoProducto.getSelectedItemPosition() > 0) {
+                    datoSelected = estadoProducto.getSelectedItem().toString();
+                } else {
+                    datoSelected = "";
+                }
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
 
+        estadoCategoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (conta >= 1 && estadoProducto.getSelectedItemPosition() > 0) {
+                    String item_spinner = estadoProducto.getSelectedItem().toString();
+
+                    String s[] = item_spinner.split("-");
+
+                    datoSelectedC = s[0].trim();
+
+                } else {
+                    datoSelectedC = "";
+                }
+                conta++;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
