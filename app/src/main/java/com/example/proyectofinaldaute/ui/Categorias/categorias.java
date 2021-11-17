@@ -2,6 +2,7 @@ package com.example.proyectofinaldaute.ui.Categorias;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -25,6 +26,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.proyectofinaldaute.MainActivity;
 import com.example.proyectofinaldaute.MySingleton;
 import com.example.proyectofinaldaute.R;
+import com.example.proyectofinaldaute.listadoCategorias;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -119,7 +121,10 @@ public class  categorias extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.btndelete:
-                new_categories();
+                Intent intent = new Intent(getContext(), listadoCategorias.class);
+                startActivity(intent);
+
+
                 break;
             default:
         }

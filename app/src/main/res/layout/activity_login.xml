@@ -73,9 +73,9 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="  Escriba su correo"
+                    android:hint="  Escriba su contraseña"
                     android:drawableStart="@drawable/ic_key"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPassword"
                     />
             </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout

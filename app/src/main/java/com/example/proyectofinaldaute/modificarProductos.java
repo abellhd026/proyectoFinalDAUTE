@@ -3,6 +3,7 @@ package com.example.proyectofinaldaute;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -58,14 +59,13 @@ public class modificarProductos extends AppCompatActivity{
 
        eliminar.setOnClickListener(new View.OnClickListener() {
 
-           String code = idP.getText().toString();
+           String code = idP.getText().toString().trim();
 
            @Override
            public void onClick(View view) {
-               if(code.length() != 0){
-                   borrarRegistro(getApplicationContext(), Integer.parseInt(code));
-                   Toast.makeText(modificarProductos.this, "Registro Eliminado!!", Toast.LENGTH_SHORT).show();
-               }
+
+                   borrarRegistro(getApplicationContext(), idProducto);
+
            }
        });
 
@@ -101,7 +101,6 @@ public class modificarProductos extends AppCompatActivity{
     }
 
 
-    //Crear aca el metodo para actualizar y eliminar el producto
     private void updateProductos (final Context context, String id, String nombre, String descripcion, String Stock, String Precio, String medida) {
         String url = "https://defunctive-loran.000webhostapp.com/actualizarProducto.php";
 
@@ -226,7 +225,7 @@ public class modificarProductos extends AppCompatActivity{
         med.setEnabled(true);
     }
 
-    private void borrarRegistro (Context context, final int id_cat){
+    private void borrarRegistro (Context context, String id_prod){
         String url = "https://defunctive-loran.000webhostapp.com/eliminarProducto.php";
 
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>(){
@@ -241,7 +240,9 @@ public class modificarProductos extends AppCompatActivity{
 
                     if(estado.equals("1")){
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
-
+                        Intent intent = new Intent(modificarProductos.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
                     }else if(estado.equals("2")){
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
                     }
@@ -261,7 +262,7 @@ public class modificarProductos extends AppCompatActivity{
                 Map<String, String>  map = new HashMap<>();
                 map.put("Content-Type", "application/json; charset=utf-8");
                 map.put("Accept", "application/json");
-                map.put("id_prod", String.valueOf(id_cat));
+                map.put("id_prod", String.valueOf(id_prod));
                 return map;
 
             }
