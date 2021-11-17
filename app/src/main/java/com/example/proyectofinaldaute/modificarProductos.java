@@ -34,8 +34,8 @@ public class modificarProductos extends AppCompatActivity{
     String idProducto = "";
     int conta = 0;
     String datoSelectedC = "", datoSelected = "";
+    Spinner estadoProducto, estadoCategoria;
     private Button actualizar, eliminar;
-    Spinner estadoP, categoriaP;
     ArrayList<String> lista = null;
     ArrayList<dto_categorias> listaCategorias;
 
@@ -60,37 +60,23 @@ public class modificarProductos extends AppCompatActivity{
         med = findViewById(R.id.med_producto);
         actualizar = findViewById(R.id.edit);
         eliminar = findViewById(R.id.delete);
-        estadoP = findViewById(R.id.est_prod);
-        categoriaP = findViewById(R.id.estado_cat);
-
+        estadoProducto = findViewById(R.id.est_producto);
+        estadoCategoria = findViewById(R.id.estado_cat);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.estadoProductos, R.layout.support_simple_spinner_dropdown_item);
 
-        estadoP.setAdapter(adapter);
+        estadoProducto.setAdapter(adapter);
+
+
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getApplicationContext(), R.array.estadoCategorias, R.layout.support_simple_spinner_dropdown_item);
+
+        estadoProducto.setAdapter(adapter2);
+
 
 
         showProductsInfo(getApplicationContext(),idProducto);
 
 
-        fk_categorias(getApplicationContext());
-
-
-
-        estadoP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (estadoP.getSelectedItemPosition() > 0) {
-                    datoSelected = estadoP.getSelectedItem().toString();
-                } else {
-                    datoSelected = "";
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
 
        eliminar.setOnClickListener(new View.OnClickListener() {
@@ -126,8 +112,7 @@ public class modificarProductos extends AppCompatActivity{
                     String Medida = med.getText().toString();
 
 
-                    // LLamar aca al metodo que actualiza el registro en la base de datos (updateProductos)
-                    updateProductos(getApplicationContext(), code, Nombre, Descripcion, Stock, Precio, Medida, datoSelected, datoSelectedC);
+                    updateProductos(getApplicationContext(), code, Nombre, Descripcion, Stock, Precio, Medida);
                 }
 
             }
@@ -135,33 +120,12 @@ public class modificarProductos extends AppCompatActivity{
 
 
 
-        categoriaP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (conta >= 1 && categoriaP.getSelectedItemPosition() > 0) {
-                    String item_spinner = categoriaP.getSelectedItem().toString();
-
-                    String s[] = item_spinner.split("-");
-
-                    datoSelectedC = s[0].trim();
-
-                } else {
-                    datoSelectedC = "";
-                }
-                conta++;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
 
     }
 
 
-    private void updateProductos (final Context context, String id, String nombre, String descripcion, String Stock, String Precio, String medida, String estado, String categoria) {
+    private void updateProductos (final Context context, String id, String nombre, String descripcion, String Stock, String Precio, String medida) {
         String url = "https://defunctive-loran.000webhostapp.com/actualizarProducto.php";
 
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -202,8 +166,6 @@ public class modificarProductos extends AppCompatActivity{
                 map.put("stock_prod", Stock);
                 map.put("precio_prod", Precio);
                 map.put("med_prod", medida);
-                map.put("est_prod", String.valueOf(estado));
-                map.put("categoria", String.valueOf(categoria));
                 return map;
             }
 
@@ -336,6 +298,8 @@ public class modificarProductos extends AppCompatActivity{
     }
 
 
+
+
     public void fk_categorias(final Context context) {
 
         listaCategorias = new ArrayList<dto_categorias>();
@@ -346,6 +310,7 @@ public class modificarProductos extends AppCompatActivity{
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
 
                 try {
                     JSONArray array = new JSONArray(response);
@@ -376,7 +341,7 @@ public class modificarProductos extends AppCompatActivity{
 
                         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item, lista);
                         // adaptador.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-                        categoriaP.setAdapter(adaptador);
+                        estadoCategoria.setAdapter(adaptador);
 
 
                     }
@@ -397,6 +362,8 @@ public class modificarProductos extends AppCompatActivity{
 
         MySingleton.getInstance(context).addToRequestQueue(request);
     }
+
+
 
 
 }

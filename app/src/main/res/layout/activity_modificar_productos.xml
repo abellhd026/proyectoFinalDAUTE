@@ -176,7 +176,7 @@
 
 
                 <Spinner
-                    android:id="@+id/est_prod"
+                    android:id="@+id/est_producto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -192,7 +192,7 @@
                 <!-- android:entries="@array/estadoCategorias"-->
 
                 <Spinner
-                    android:id="@+id/fk_categorias"
+                    android:id="@+id/est_categorias"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
