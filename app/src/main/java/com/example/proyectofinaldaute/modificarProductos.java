@@ -110,7 +110,7 @@ public class modificarProductos extends AppCompatActivity{
                     String Medida = med.getText().toString();
 
 
-                    updateProductos(getApplicationContext(), code, Nombre, Descripcion, Stock, Precio, Medida);
+                    updateProductos(getApplicationContext(), code, Nombre, Descripcion, Stock, Precio, Medida, datoSelected, datoSelectedC);
                 }
 
             }
@@ -157,7 +157,7 @@ public class modificarProductos extends AppCompatActivity{
     }
 
 
-    private void updateProductos (final Context context, String id, String nombre, String descripcion, String Stock, String Precio, String medida) {
+    private void updateProductos (final Context context, String id, String nombre, String descripcion, String Stock, String Precio, String medida, String estado, String categoria) {
         String url = "https://defunctive-loran.000webhostapp.com/actualizarProducto.php";
 
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -198,6 +198,8 @@ public class modificarProductos extends AppCompatActivity{
                 map.put("stock_prod", Stock);
                 map.put("precio_prod", Precio);
                 map.put("med_prod", medida);
+                map.put("categoria", estado);
+
                 return map;
             }
 
