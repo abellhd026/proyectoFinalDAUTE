@@ -33,7 +33,7 @@ public class modificarProductos extends AppCompatActivity{
     private EditText idP, nombre, desc, stock, precio, med;
     String idProducto = "";
     int conta = 0;
-    String datoSelectedC = "";
+    String datoSelectedC = "", datoSelected = "";
     private Button actualizar, eliminar;
     Spinner estadoP, categoriaP;
     ArrayList<String> lista = null;
@@ -76,6 +76,23 @@ public class modificarProductos extends AppCompatActivity{
 
 
 
+        estadoP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (estadoP.getSelectedItemPosition() > 0) {
+                    datoSelected = estadoP.getSelectedItem().toString();
+                } else {
+                    datoSelected = "";
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
        eliminar.setOnClickListener(new View.OnClickListener() {
 
            String code = idP.getText().toString().trim();
@@ -110,7 +127,7 @@ public class modificarProductos extends AppCompatActivity{
 
 
                     // LLamar aca al metodo que actualiza el registro en la base de datos (updateProductos)
-                    updateProductos(getApplicationContext(), code, Nombre, Descripcion, Stock, Precio,Medida);
+                    updateProductos(getApplicationContext(), code, Nombre, Descripcion, Stock, Precio, Medida, datoSelected, datoSelectedC);
                 }
 
             }
@@ -144,7 +161,7 @@ public class modificarProductos extends AppCompatActivity{
     }
 
 
-    private void updateProductos (final Context context, String id, String nombre, String descripcion, String Stock, String Precio, String medida) {
+    private void updateProductos (final Context context, String id, String nombre, String descripcion, String Stock, String Precio, String medida, String estado, String categoria) {
         String url = "https://defunctive-loran.000webhostapp.com/actualizarProducto.php";
 
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -185,6 +202,8 @@ public class modificarProductos extends AppCompatActivity{
                 map.put("stock_prod", Stock);
                 map.put("precio_prod", Precio);
                 map.put("med_prod", medida);
+                map.put("est_prod", String.valueOf(estado));
+                map.put("categoria", String.valueOf(categoria));
                 return map;
             }
 
