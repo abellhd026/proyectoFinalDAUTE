@@ -43,7 +43,6 @@
                         android:drawableStart="@drawable/ic_id"
                         android:ems="10"
                         android:background="@color/common_google_signin_btn_text_dark_disabled"
-                        android:hint="* Id Producto"
                         android:inputType="text"
                         android:textColor="@color/black"
                         android:textSize="14dp" />
@@ -67,7 +66,6 @@
                         android:paddingLeft="1dp"
                         android:drawableStart="@drawable/ic_name_prod"
                         android:ems="10"
-                        android:hint="* Nombre del Producto"
                         android:inputType="text"
                         android:background="@color/common_google_signin_btn_text_dark_disabled"
                         android:textColor="@color/black"
@@ -94,7 +92,6 @@
                         android:drawableStart="@drawable/ic_descripcion"
                         android:textSize="14dp"
                         android:textColor="@color/black"
-                        android:hint="Descripción del Producto"
                         android:background="@color/common_google_signin_btn_text_dark_disabled"
                         android:inputType="text"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -118,7 +115,6 @@
                         android:drawableStart="@drawable/ic_stock"
                         android:ems="10"
                         android:background="@color/common_google_signin_btn_text_dark_disabled"
-                        android:hint="* Stock"
                         android:inputType="numberDecimal"
                         android:textColor="@color/black"
                         android:textSize="14dp" />
@@ -143,7 +139,6 @@
                         android:drawableStart="@drawable/ic_money"
                         android:ems="10"
                         android:background="@color/common_google_signin_btn_text_dark_disabled"
-                        android:hint="* Precio"
                         android:inputType="numberDecimal"
                         android:textColor="@color/black"
                         android:textSize="14dp" />
@@ -167,7 +162,6 @@
                         android:paddingLeft="1dp"
                         android:drawableStart="@drawable/ic_um"
                         android:ems="10"
-                        android:hint="* Unidad de Medida (U, MTS, ROLL, PIE)"
                         android:inputType="text"
                         android:background="@color/common_google_signin_btn_text_dark_disabled"
                         android:textColor="@color/black"
