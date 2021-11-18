@@ -59,6 +59,8 @@ public class modificarCategorias extends Activity implements View.OnClickListene
         actualizar.setOnClickListener(this);
         eliminar.setOnClickListener(this);
 
+        idC.setEnabled(false);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.estadoCategorias, R.layout.support_simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         estado.setAdapter(adapter);
