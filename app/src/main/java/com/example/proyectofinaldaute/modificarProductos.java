@@ -1,8 +1,11 @@
 package com.example.proyectofinaldaute;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -29,7 +32,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class modificarProductos extends AppCompatActivity{
+public class modificarProductos extends Activity implements View.OnClickListener {
     private EditText idP, nombre, desc, stock, precio, med;
     String idProducto = "";
     int conta = 0;
@@ -75,46 +78,9 @@ public class modificarProductos extends AppCompatActivity{
         showProductsInfo(getApplicationContext(),idProducto);
 
 
+        eliminar.setOnClickListener(this);
+        actualizar.setOnClickListener(this);
 
-
-       eliminar.setOnClickListener(new View.OnClickListener() {
-
-           String code = idP.getText().toString().trim();
-
-           @Override
-           public void onClick(View view) {
-
-                   borrarRegistro(getApplicationContext(), idProducto);
-
-           }
-       });
-
-        actualizar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (actualizar.getText().toString().equals("Editar")) {
-                    actualizar.setText(R.string.update);
-                    enableEditText();
-                    Toast.makeText(getBaseContext(), "Actualizar", Toast.LENGTH_SHORT).show();
-                } else {
-                    actualizar.setText(R.string.edit);
-                    hideEditText();
-                    Toast.makeText(getBaseContext(), "Editar", Toast.LENGTH_SHORT).show();
-
-                    String code = idP.getText().toString();
-                    String Nombre = nombre.getText().toString();
-                    String Descripcion = desc.getText().toString();
-                    String Stock = stock.getText().toString();
-                    String Precio = precio.getText().toString();
-                    String Medida = med.getText().toString();
-
-
-                    updateProductos(getApplicationContext(), code, Nombre, Descripcion, Stock, Precio, Medida, datoSelected, datoSelectedC);
-                }
-
-            }
-        });
 
         estadoProducto.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -171,6 +137,9 @@ public class modificarProductos extends AppCompatActivity{
 
                     if(estado.equals("1")){
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(modificarProductos.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
 
                     }else if(estado.equals("2")){
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
@@ -398,7 +367,78 @@ public class modificarProductos extends AppCompatActivity{
         MySingleton.getInstance(context).addToRequestQueue(request);
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.edit:
+                if (actualizar.getText().toString().equals("Editar")) {
+                    actualizar.setText(R.string.update);
+                    enableEditText();
+                    Toast.makeText(getBaseContext(), "Actualizar", Toast.LENGTH_SHORT).show();
+                }else{
+
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+                    builder1.setTitle("Actualizar");
+                    builder1.setMessage("¿Desea Actualizar esta categoria?");
+                    builder1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            actualizar.setText(R.string.edit);
+                            hideEditText();
+                            Toast.makeText(getBaseContext(), "Editar", Toast.LENGTH_SHORT).show();
+
+                            String code = idP.getText().toString();
+                            String Nombre = nombre.getText().toString();
+                            String Descripcion = desc.getText().toString();
+                            String Stock = stock.getText().toString();
+                            String Precio = precio.getText().toString();
+                            String Medida = med.getText().toString();
 
 
+                            updateProductos(getApplicationContext(), code, Nombre, Descripcion, Stock, Precio, Medida, datoSelected, datoSelectedC);
+                        }
+                    });
+
+                    builder1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+                    builder1.show();
+
+
+                }
+
+
+
+
+
+
+
+
+                break;
+            case R.id.delete:
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
+                builder2.setTitle("Eliminar");
+                builder2.setMessage("¿Desea Eliminar este producto?");
+                builder2.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        borrarRegistro(getApplicationContext(), idProducto);
+                    }
+                });
+
+                builder2.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder2.show();
+                break;
+    }
+    }
 
 }
