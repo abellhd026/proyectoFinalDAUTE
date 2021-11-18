@@ -76,18 +76,34 @@ public class Login extends AppCompatActivity {
         String email = emailInput.getText().toString().trim();
         String password = passInput.getText().toString();
 
-        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(Login.this, "Has iniciado sesion correctamente!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Login.this, Navigation_DAUTE.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(Login.this, "ERROR", Toast.LENGTH_SHORT).show();
+        boolean val = validarDatos(email, password);
+        
+        if (val) {
+            firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        Toast.makeText(Login.this, "Has iniciado sesion correctamente!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Login.this, Navigation_DAUTE.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(Login.this, "ERROR", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        }
+
     }
+
+    public boolean validarDatos(String email, String password) {
+        if (email.isEmpty() && password.isEmpty()) {
+            emailInput.setError("Ingrese un correo");
+            passInput.setError("Ingrese su contraseña");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 
 }
