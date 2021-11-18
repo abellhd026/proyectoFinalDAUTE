@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">proyectoFinalDAUTE</string>
+    <string name="app_name">Sistemas</string>
     <string name="title_activity_navigation_daute">Navigation_DAUTE</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -9,10 +9,8 @@
     <string name="action_settings">Settings</string>
     <string name="action_logout">Cerrar Sesion</string>
         <string name="Regresar">Regresar</string>
-    <string name="menu_home">Home</string>
+    <string name="menu_home">Inicio</string>
     <string name="menu_gallery">Gallery</string>
-    <string name="menu_actualizar">Actualizar Perfil</string>
-    <string name="menu_eliminar">Eliminar Perfil</string>
     <string name="menu_categorias">Agregar Categorias</string>
     <string name="menu_productos">Agregar Productos</string>
     <string name="menu_modificar_productos">Modificar Productos</string>
