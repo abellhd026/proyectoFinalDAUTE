@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/fon2"
-    android:padding="16dp"
+    android:padding="25dp"
     tools:context=".MainActivity">
 
     <ListView
