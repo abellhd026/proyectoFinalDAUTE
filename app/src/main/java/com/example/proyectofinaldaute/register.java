@@ -63,19 +63,37 @@ public class register extends AppCompatActivity {
         
         String email = emailInput.getText().toString().trim();
         String password = passInput.getText().toString();
-        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(register.this, "EL REGISTRO FUE CORRECTO", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(register.this, Login.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    String e = task.getException().toString();
-                    Toast.makeText(register.this, e, Toast.LENGTH_SHORT).show();
+
+        boolean val = validarDatosRegistro(email, password);
+
+        if (val) {
+            firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(register.this, "Tu Registro fue exitoso", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(register.this, Login.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        String e = task.getException().toString();
+                        Toast.makeText(register.this, e, Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        }
+
     }
+
+    public boolean validarDatosRegistro(String email, String password) {
+        if (email.isEmpty() && password.isEmpty()) {
+            emailInput.setError("Ingrese un correo");
+            passInput.setError("Ingrese su contraseña");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
 }

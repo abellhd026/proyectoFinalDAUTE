@@ -77,7 +77,7 @@ public class Login extends AppCompatActivity {
         String password = passInput.getText().toString();
 
         boolean val = validarDatos(email, password);
-        
+
         if (val) {
             firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -87,7 +87,7 @@ public class Login extends AppCompatActivity {
                         Intent intent = new Intent(Login.this, Navigation_DAUTE.class);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(Login.this, "ERROR", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "Error en tus credenciales", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
