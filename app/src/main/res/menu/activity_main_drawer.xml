@@ -8,12 +8,12 @@
 
         <item
             android:id="@+id/nav_categorias"
-            android:icon="@drawable/ic_categorias"
+            android:icon="@drawable/ic_categoria"
             android:title="@string/menu_categorias" />
 
         <item
             android:id="@+id/nav_productos"
-            android:icon="@drawable/ic_categorias"
+            android:icon="@drawable/ic_producto"
             android:title="@string/menu_productos" />
 
     </group>
