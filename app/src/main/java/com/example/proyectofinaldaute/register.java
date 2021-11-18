@@ -86,13 +86,15 @@ public class register extends AppCompatActivity {
     }
 
     public boolean validarDatosRegistro(String email, String password) {
-        if (email.isEmpty() && password.isEmpty()) {
+        if (email.length() == 0) {
             emailInput.setError("Ingrese un correo");
+            return false;
+
+        } else if( password.length() == 0) {
             passInput.setError("Ingrese su contraseña");
             return false;
-        } else {
-            return true;
         }
+        return true;
     }
 
 
