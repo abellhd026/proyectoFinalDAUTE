@@ -2,11 +2,13 @@ package com.example.proyectofinaldaute.ui.Productos;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -302,15 +304,37 @@ public class productos extends Fragment implements View.OnClickListener {
             switch (view.getId()){
                 case R.id.btnSaveP:
 
-                    if (validarDatos(code, Nombre, Descripcion, Stock, Precio, Medida)) { // Funcion que retorna true si hay datos ingresados
-                        if (estado.getSelectedItemPosition() > 0  && categoria.getSelectedItemPosition() > 0) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setTitle("Guardar");
+                    builder.setMessage("¿Desea guardar este producto?");
 
-                            // Metodo que guarda  la informacion en la base de datos
-                            saveProductos(getContext(),code,Nombre,Descripcion,Stock,Precio,Medida,Estado,Categoria);
-                            progressDialog.setMessage("Guardando Producto..."); //esto es del progress dialog
-                            progressDialog.show();  //esto es del progress dialog
+                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            if (validarDatos(code, Nombre, Descripcion, Stock, Precio, Medida)) { // Funcion que retorna true si hay datos ingresados
+                                if (estado.getSelectedItemPosition() > 0  && categoria.getSelectedItemPosition() > 0) {
+
+                                    // Metodo que guarda  la informacion en la base de datos
+                                    saveProductos(getContext(),code,Nombre,Descripcion,Stock,Precio,Medida,Estado,Categoria);
+                                    progressDialog.setMessage("Guardando Producto..."); //esto es del progress dialog
+                                    progressDialog.show();  //esto es del progress dialog
+                                }
+                            }
                         }
-                    }
+                    });
+                    builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+
+                    builder.show();
+
+
+
+
 
                     break;
 
