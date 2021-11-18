@@ -3,6 +3,7 @@ package com.example.proyectofinaldaute;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,6 +21,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.proyectofinaldaute.ui.Categorias.categorias;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,7 +29,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class modificarCategorias extends AppCompatActivity {
+public class modificarCategorias extends Activity implements View.OnClickListener {
     private EditText idC, nombre;
     Spinner estado;
     String idCategoria = "";
@@ -54,59 +56,8 @@ public class modificarCategorias extends AppCompatActivity {
         estado = findViewById(R.id.estado_cat);
         showCategoriasInfo(getApplicationContext(), idCategoria);
 
-
-        actualizar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                AlertDialog.Builder builder2 = new AlertDialog.Builder(getApplicationContext());
-                builder2.setTitle("¿Actualizar?");
-                builder2.setMessage("¿Desea Actualizar esta categoria?");
-                Toast.makeText(getApplicationContext(), "esta en funcion!!", Toast.LENGTH_SHORT).show();
-                builder2.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String id = idC.getText().toString().trim();
-                        String Nombre = nombre.getText().toString();
-
-                        updateCategory(getApplicationContext(), id, Nombre, datoSelected);
-                    }
-                });
-
-                builder2.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-
-            }
-        });
-
-        eliminar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setTitle("¿Eliminar?");
-                builder.setMessage("¿Desea Eliminar esta categoria?");
-
-                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        borrarCategoria(getApplicationContext(), idCategoria);
-                    }
-                });
-
-                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-
-
-            }
-        });
+        actualizar.setOnClickListener(this);
+        eliminar.setOnClickListener(this);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.estadoCategorias, R.layout.support_simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -129,6 +80,10 @@ public class modificarCategorias extends AppCompatActivity {
         });
 
     }
+
+
+
+
 
     private void showCategoriasInfo(Context context, String id) {
 
@@ -190,6 +145,9 @@ public class modificarCategorias extends AppCompatActivity {
 
                     if(estado.equals("1")){
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(modificarCategorias.this, listadoCategorias.class);
+                        startActivity(intent);
+                        finish();
 
                     }else if(estado.equals("2")){
                         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
@@ -271,4 +229,56 @@ public class modificarCategorias extends AppCompatActivity {
         MySingleton.getInstance(context).addToRequestQueue(request);
 
     }
+
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()){
+            case R.id.btnUpdate:
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+                builder1.setTitle("Actualizar");
+                builder1.setMessage("¿Desea Actualizar esta categoria?");
+                builder1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String id = idC.getText().toString().trim();
+                        String Nombre = nombre.getText().toString();
+
+                        updateCategory(getApplicationContext(), id, Nombre, datoSelected);
+                    }
+                });
+
+                builder1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder1.show();
+
+                break;
+
+            case R.id.btnDelete:
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
+                builder2.setTitle("Eliminar");
+                builder2.setMessage("¿Desea Eliminar esta categoria?");
+                builder2.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        borrarCategoria(getApplicationContext(), idCategoria);
+                    }
+                });
+
+                builder2.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                builder2.show();
+                break;
+            }
+
+    }
+
 }
