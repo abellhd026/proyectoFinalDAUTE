@@ -40,7 +40,6 @@ import java.util.Map;
 @SuppressWarnings("ALL")
 public class  categorias extends Fragment implements View.OnClickListener {
 
-
     private EditText id, nombre;
     private Spinner estado;
     private Button save, delete;
@@ -50,7 +49,7 @@ public class  categorias extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View root = inflater.inflate(R.layout.fragment_categorias, container, false);
 
         id = root.findViewById(R.id.id_cat);
@@ -59,6 +58,8 @@ public class  categorias extends Fragment implements View.OnClickListener {
         save = root.findViewById(R.id.btnSave);
         delete = root.findViewById(R.id.btndelete);
         progressDialog = new ProgressDialog(getContext());
+
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.estadoCategorias, R.layout.support_simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         estado.setAdapter(adapter);
@@ -86,7 +87,60 @@ public class  categorias extends Fragment implements View.OnClickListener {
         return root;
     }
 
-    //HACER ACA EL METODO PARA VALIDACION DE DATOS
+
+    // Metodo que guarda los datos de la categoria en la base de datos
+    private void saveServer (final Context context, final int id_cat, final String name_cat, final int est_cat){
+        String url = "https://defunctive-loran.000webhostapp.com/guardarCategoria.php";
+
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>(){
+
+            @Override
+            public void onResponse(String response) {
+                JSONObject requestJSON;
+                try {
+                    requestJSON = new JSONObject(response.toString());
+                    String estado = requestJSON.getString("estado");
+                    String mensaje = requestJSON.getString("mensaje");
+
+                    if(estado.equals("1")){
+                        Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+                    }else if(estado.equals("2")){
+                        Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+                    }
+
+                    progressDialog.dismiss();
+
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "No se puedo guardar. \n" + "Intentelo más tarde.", Toast.LENGTH_SHORT).show();
+            }
+        }){
+            protected Map<String, String> getParams() throws AuthFailureError{
+                Map<String, String>  map = new HashMap<>();
+                map.put("Content-Type", "application/json; charset=utf-8");
+                map.put("Accept", "application/json");
+                map.put("id", String.valueOf(id_cat));
+                map.put("nombre", name_cat);
+                map.put("estado", String.valueOf(est_cat));
+                return map;
+
+            }
+
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(request);
+
+    }
+
+
+
+    // Metodo que valida que los campos contengan informacion
     public boolean validarDatos(String code, String name) {
         if (code.length() == 0) {
             id.setError("Ingrese un ID");
@@ -99,7 +153,7 @@ public class  categorias extends Fragment implements View.OnClickListener {
         return true;
     }
 
-    //HACER ACA EL EVENTO ONCLICK DEL BOTON GUARDAR
+    // Metodo donde se definen los eventos OnCLick del boton para Guardar y Ver Categorias
     @Override
     public void onClick(View view) {
 
@@ -149,61 +203,5 @@ public class  categorias extends Fragment implements View.OnClickListener {
         }
     }
 
-
-    private void saveServer (final Context context, final int id_cat, final String name_cat, final int est_cat){
-        String url = "https://defunctive-loran.000webhostapp.com/guardarCategoria.php";
-
-        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>(){
-
-            @Override
-            public void onResponse(String response) {
-                JSONObject requestJSON;
-                try {
-                    requestJSON = new JSONObject(response.toString());
-                    String estado = requestJSON.getString("estado");
-                    String mensaje = requestJSON.getString("mensaje");
-
-                    if(estado.equals("1")){
-                        Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
-                    }else if(estado.equals("2")){
-                        Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
-                    }
-
-                    progressDialog.dismiss();
-
-                }catch (JSONException e){
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, "No se puedo guardar. \n" + "Intentelo más tarde.", Toast.LENGTH_SHORT).show();
-            }
-        }){
-            protected Map<String, String> getParams() throws AuthFailureError{
-                Map<String, String>  map = new HashMap<>();
-                map.put("Content-Type", "application/json; charset=utf-8");
-                map.put("Accept", "application/json");
-                map.put("id", String.valueOf(id_cat));
-                map.put("nombre", name_cat);
-                map.put("estado", String.valueOf(est_cat));
-                return map;
-
-            }
-
-        };
-
-        MySingleton.getInstance(context).addToRequestQueue(request);
-
-    }//Fin del metodo saveServer
-
-    //metodo para el boton nueva categoria
-    private void new_categories() {
-        id.setText(null);
-        nombre.setText(null);
-        estado.setSelection(0);
-    }
 
 }

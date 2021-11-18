@@ -68,12 +68,12 @@ public class modificarProductos extends AppCompatActivity{
         estadoProducto.setAdapter(adapter);
 
 
+        // Muestra las categorias en el Spinner al cargar la vista
         fk_categorias(getApplicationContext());
 
 
-
+        // Muestra la informacion del producto seleccionado del listado
         showProductsInfo(getApplicationContext(),idProducto);
-
 
 
 
@@ -89,6 +89,8 @@ public class modificarProductos extends AppCompatActivity{
            }
        });
 
+
+       // Evento OnCLick que actualiza la informacion del producto
         actualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,13 +111,17 @@ public class modificarProductos extends AppCompatActivity{
                     String Precio = precio.getText().toString();
                     String Medida = med.getText().toString();
 
+                    if (validarDatos(code, Nombre, Descripcion, Stock, Precio, Medida)) {
+                        updateProductos(getApplicationContext(), code, Nombre, Descripcion, Stock, Precio, Medida, datoSelected, datoSelectedC);
+                    }
 
-                    updateProductos(getApplicationContext(), code, Nombre, Descripcion, Stock, Precio, Medida, datoSelected, datoSelectedC);
                 }
 
             }
         });
 
+
+        // Guarda el estado del producto en una variable
         estadoProducto.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -132,6 +138,7 @@ public class modificarProductos extends AppCompatActivity{
             }
         });
 
+        // Guarda el ID de la Categoria seleccionada del Spinner
         estadoCategoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -156,7 +163,7 @@ public class modificarProductos extends AppCompatActivity{
 
     }
 
-
+    // Actualiza la informacio de los productos en la base de datos
     private void updateProductos (final Context context, String id, String nombre, String descripcion, String Stock, String Precio, String medida, String estado, String categoria) {
         String url = "https://defunctive-loran.000webhostapp.com/actualizarProducto.php";
 
@@ -211,6 +218,7 @@ public class modificarProductos extends AppCompatActivity{
     }
 
 
+    // Metodo que muestra la informacion del producto a partir de su id recibido desde el listado de productos
     private void showProductsInfo(Context context, String id) {
 
         String url = "https://defunctive-loran.000webhostapp.com/getProductoCodigo.php";
@@ -284,6 +292,8 @@ public class modificarProductos extends AppCompatActivity{
         med.setEnabled(true);
     }
 
+
+    // Metodo que eliminar un producto de la base de datos
     private void borrarRegistro (Context context, String id_prod){
         String url = "https://defunctive-loran.000webhostapp.com/eliminarProducto.php";
 
@@ -334,7 +344,7 @@ public class modificarProductos extends AppCompatActivity{
 
 
 
-
+    // Metodo que consulta las categorias en la bd y las muestra en el Spinner
     public void fk_categorias(final Context context) {
 
         listaCategorias = new ArrayList<dto_categorias>();
@@ -399,6 +409,34 @@ public class modificarProductos extends AppCompatActivity{
     }
 
 
+    // Metodo que valida que el usuario haya introducido datos
+    public boolean validarDatos(String code, String name, String descrip, String strock, String prec, String medid) {
 
+        if (code.length() == 0) {
+            idP.setError("Ingrese ID");
+
+        }else if( name.length() == 0) {
+            nombre.setError("Ingrese Nombre");
+
+        }else if(descrip.length() == 0){
+            desc.setError("Ingrese Descripcion");
+
+        } else if (strock.length() == 0) {
+            stock.setError("Ingrese Stock");
+
+        } else if (prec.length() == 0) {
+            precio.setError("Ingrese Precio");
+
+        } else if (medid.length() == 0) {
+            med.setError("Ingrese UM");
+
+        } else if (estadoCategoria.getSelectedItemPosition() == 0) {
+            Toast.makeText(getApplicationContext(), "Debe de seleccionar una categoria", Toast.LENGTH_SHORT).show();
+
+        } else if (estadoProducto.getSelectedItemPosition() == 0) {
+            Toast.makeText(getApplicationContext(), "Debe seleccionar un estado para el producto", Toast.LENGTH_SHORT).show();
+        }
+        return true;
+    }
 
 }

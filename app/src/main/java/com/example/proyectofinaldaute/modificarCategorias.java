@@ -58,27 +58,11 @@ public class modificarCategorias extends AppCompatActivity {
         actualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String id = idC.getText().toString().trim();
+                String Nombre = nombre.getText().toString();
 
-                AlertDialog.Builder builder2 = new AlertDialog.Builder(getApplicationContext());
-                builder2.setTitle("¿Actualizar?");
-                builder2.setMessage("¿Desea Actualizar esta categoria?");
-                Toast.makeText(getApplicationContext(), "esta en funcion!!", Toast.LENGTH_SHORT).show();
-                builder2.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String id = idC.getText().toString().trim();
-                        String Nombre = nombre.getText().toString();
+                updateCategory(getApplicationContext(), id, Nombre, datoSelected);
 
-                        updateCategory(getApplicationContext(), id, Nombre, datoSelected);
-                    }
-                });
-
-                builder2.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
 
             }
         });
@@ -86,27 +70,12 @@ public class modificarCategorias extends AppCompatActivity {
         eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setTitle("¿Eliminar?");
-                builder.setMessage("¿Desea Eliminar esta categoria?");
 
-                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        borrarCategoria(getApplicationContext(), idCategoria);
-                    }
-                });
-
-                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-
+            borrarCategoria(getApplicationContext(), idCategoria);
 
             }
         });
+
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.estadoCategorias, R.layout.support_simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -130,6 +99,8 @@ public class modificarCategorias extends AppCompatActivity {
 
     }
 
+
+    // Muestra la informacion de la categoria seleccionada del listado
     private void showCategoriasInfo(Context context, String id) {
 
         String url = "https://defunctive-loran.000webhostapp.com/buscarCategoriaPorCodigo.php";
@@ -176,6 +147,9 @@ public class modificarCategorias extends AppCompatActivity {
         MySingleton.getInstance(context).addToRequestQueue(request);
     }
 
+
+
+    // Metodo que actualiza la informacion de las categorias
     private void updateCategory (final Context context, String id, String nombre, String estado) {
         String url = "https://defunctive-loran.000webhostapp.com/actualizarCategoria.php";
 
@@ -224,6 +198,8 @@ public class modificarCategorias extends AppCompatActivity {
     }
 
 
+
+    // Metodo que elimina categorias
     private void borrarCategoria (Context context, String id_cat){
         String url = "https://defunctive-loran.000webhostapp.com/eliminarCategoria.php";
 

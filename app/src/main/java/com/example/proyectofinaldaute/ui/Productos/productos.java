@@ -72,19 +72,19 @@ public class productos extends Fragment implements View.OnClickListener {
         saved = view.findViewById(R.id.btnSaveP);
         viewP = view.findViewById(R.id.btnView);
         progressDialog = new ProgressDialog(getContext());
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.estadoProductos, R.layout.support_simple_spinner_dropdown_item);
 
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.estadoProductos, R.layout.support_simple_spinner_dropdown_item);
         estado.setAdapter(adapter);
 
 
+        // Metodo que carga las categorias en el Spinner al iniciar la vista
         fk_categorias(getContext());
 
-        // Inflate the layout for this fragmen
 
 
         saved.setOnClickListener(this);
 
-
+        // Guarda el estado seleccionado del Spinner en la variable datoSelected
         estado.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -101,7 +101,7 @@ public class productos extends Fragment implements View.OnClickListener {
             }
         });
 
-
+        // Guarda el ID de la categoria seleccionada del Spinner para asociar el producto a una categoria en especifico
         categoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -124,6 +124,8 @@ public class productos extends Fragment implements View.OnClickListener {
             }
         });
 
+
+        // Evento OnClick que dirige al usuario a la vista del listado de los productos
         viewP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,6 +141,8 @@ public class productos extends Fragment implements View.OnClickListener {
     }
 
 
+
+    // Metodo que guarda los productos en la base de datos
     private void saveProductos (final Context context, String id, String nombre, String descripcion, String Stock, String Precio, String medida, String estado, String categoria) {
         String url = "https://defunctive-loran.000webhostapp.com/guardarProducto.php";
 
@@ -192,7 +196,39 @@ public class productos extends Fragment implements View.OnClickListener {
     }
 
 
+    @Override
+    public void onClick(View view) {
+        String code = id.getText().toString();
+        String Nombre = nombre.getText().toString();
+        String Descripcion = descripcion.getText().toString();
+        String Stock = stock.getText().toString();
+        String Precio = precio.getText().toString();
+        String Medida = medida.getText().toString();
+        String Estado = datoSelected;
+        String Categoria = datoSelectedC;
 
+
+        switch (view.getId()){
+            case R.id.btnSaveP:
+
+                if (validarDatos(code, Nombre, Descripcion, Stock, Precio, Medida)) { // Funcion que retorna true si hay datos ingresados
+                    if (estado.getSelectedItemPosition() > 0  && categoria.getSelectedItemPosition() > 0) {
+
+                        // Metodo que guarda  la informacion en la base de datos
+                        saveProductos(getContext(),code,Nombre,Descripcion,Stock,Precio,Medida,Estado,Categoria);
+                        progressDialog.setMessage("Guardando Producto..."); //esto es del progress dialog
+                        progressDialog.show();  //esto es del progress dialog
+                    }
+                }
+
+                break;
+
+        }
+    }
+
+
+
+    // Metodo que consulta las categorias en la bd y las muestra en el Spinner
     public void fk_categorias(final Context context) {
 
         listaCategorias = new ArrayList<dto_categorias>();
@@ -221,23 +257,15 @@ public class productos extends Fragment implements View.OnClickListener {
                         String nombre_categoria = categoriasObject.getString("nombre");
                         int estado_categoria = Integer.parseInt(categoriasObject.getString("estado"));
 
-
-
                         objCategorias = new dto_categorias(id_categoria, nombre_categoria, estado_categoria);
-
-
 
                         listaCategorias.add(objCategorias);
 
                         lista.add(listaCategorias.get(i).getId()+"-"+listaCategorias.get(i).getNombre());
 
-                        //lista.add(id_categoria,nombre_categoria);
-
 
                         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getContext(),R.layout.support_simple_spinner_dropdown_item, lista);
-                        // adaptador.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                         categoria.setAdapter(adaptador);
-
 
                     }
 
@@ -258,6 +286,9 @@ public class productos extends Fragment implements View.OnClickListener {
         MySingleton.getInstance(context).addToRequestQueue(request);
     }
 
+
+
+    // Metodo que valida que el usuario haya introducido datos
     public boolean validarDatos(String code, String name, String descrip, String strock, String prec, String medid) {
 
         if (code.length() == 0) {
@@ -287,34 +318,6 @@ public class productos extends Fragment implements View.OnClickListener {
         return true;
     }
 
-    @Override
-    public void onClick(View view) {
-            String code = id.getText().toString();
-            String Nombre = nombre.getText().toString();
-            String Descripcion = descripcion.getText().toString();
-            String Stock = stock.getText().toString();
-            String Precio = precio.getText().toString();
-            String Medida = medida.getText().toString();
-            String Estado = datoSelected;
-            String Categoria = datoSelectedC;
 
-
-            switch (view.getId()){
-                case R.id.btnSaveP:
-
-                    if (validarDatos(code, Nombre, Descripcion, Stock, Precio, Medida)) { // Funcion que retorna true si hay datos ingresados
-                        if (estado.getSelectedItemPosition() > 0  && categoria.getSelectedItemPosition() > 0) {
-
-                            // Metodo que guarda  la informacion en la base de datos
-                            saveProductos(getContext(),code,Nombre,Descripcion,Stock,Precio,Medida,Estado,Categoria);
-                            progressDialog.setMessage("Guardando Producto..."); //esto es del progress dialog
-                            progressDialog.show();  //esto es del progress dialog
-                        }
-                    }
-
-                    break;
-
-            }
-        }
 
 }
