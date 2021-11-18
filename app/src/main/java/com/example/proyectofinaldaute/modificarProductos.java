@@ -379,7 +379,7 @@ public class modificarProductos extends Activity implements View.OnClickListener
 
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
                     builder1.setTitle("Actualizar");
-                    builder1.setMessage("¿Desea Actualizar esta categoria?");
+                    builder1.setMessage("¿Desea Actualizar este producto?");
                     builder1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
