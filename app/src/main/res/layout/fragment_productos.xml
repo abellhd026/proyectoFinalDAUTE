@@ -233,6 +233,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Guardar"
+                    android:paddingLeft="20dp"
+                    android:drawableStart="@drawable/ic_actualizar"
                     android:textColor="@color/black"
                     android:background="@drawable/ic_buutton"/>
 
@@ -249,6 +251,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Ver Listado"
+                    android:paddingLeft="17dp"
+                    android:drawableStart="@drawable/ic_listado"
                     android:textColor="@color/black"
                     android:background="@drawable/ic_buutton"/>
 

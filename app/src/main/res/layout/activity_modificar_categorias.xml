@@ -99,6 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Actualizar"
+                    android:paddingLeft="17dp"
                     android:drawableStart="@drawable/ic_descripcion"
                     android:textColor="@color/black"
                     android:background="@drawable/ic_buutton"/>
@@ -114,6 +115,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:paddingLeft="17dp"
                     android:text="borrar"
                     android:drawableStart="@drawable/ic_borrar"
                     android:textColor="@color/black"
