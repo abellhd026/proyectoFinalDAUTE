@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.Regresar) {
             Toast.makeText(MainActivity.this, "Regresar", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(MainActivity.this, productos.class);
+            Intent intent = new Intent(MainActivity.this, Navigation_DAUTE.class);
             startActivity(intent);
             finish();
         }
